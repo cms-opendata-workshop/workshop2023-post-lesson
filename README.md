@@ -1,6 +1,6 @@
-# Cloud Computing Lesson
+# Cloud Computing Pre-exercice
 
-This is the cloud computing tutorial for the CMS open data workshop
+This is the cloud computing set up tutorial for the CMS open data workshop
 
 ## Contributing
 
