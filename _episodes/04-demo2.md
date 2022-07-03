@@ -1,7 +1,7 @@
 ---
 title: "Demo: Storing workflow output on Google Kubernetes Engine"
-teaching: 10
-exercises: 40
+teaching: 5
+exercises: 30
 questions:
 - "How to setup a workflow engine to submit jobs?"
 - "How to run a simple job?"
