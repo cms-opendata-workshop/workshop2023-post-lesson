@@ -129,14 +129,14 @@ gcloud compute disks create --size=100GB --zone=us-central1-c gce-nfs-disk-1
 Set up an nfs server for this disk:
 
 ```bash
-wget https://cms-opendata-workshop.github.io/workshop2021-lesson-cloud/files/001-nfs-server.yaml
+wget https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/files/001-nfs-server.yaml
 kubectl apply -n argo -f 001-nfs-server.yaml
 ```
 
 Set up a nfs service, so we can access the server:
 
 ```bash
-wget https://cms-opendata-workshop.github.io/workshop2021-lesson-cloud/files/002-nfs-server-service.yaml
+wget https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/files/002-nfs-server-service.yaml
 kubectl apply -n argo -f 002-nfs-server-service.yaml
 ```
 
@@ -151,7 +151,7 @@ Let's create a *persisten volume* out of this nfs disk.  Note that persisten vol
 We need to write that IP number above into the appropriate place in this file:
 
 ```bash
-wget https://cms-opendata-workshop.github.io/workshop2021-lesson-cloud/files/003-pv.yaml
+wget https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/files/003-pv.yaml
 ```
 
 ~~~
@@ -185,7 +185,7 @@ kubectl get pv
 Apps can claim persistent volumes through *persistent volume claims* (pvc).  Let's create a pvc:
 
 ```bash
-wget https://cms-opendata-workshop.github.io/workshop2021-lesson-cloud/files/003-pvc.yaml
+wget https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/files/003-pvc.yaml
 kubectl apply -n argo -f 003-pvc.yaml
 ```
 Check:
