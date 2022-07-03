@@ -37,7 +37,7 @@ Then prepare to deploy the fileserver by downloading the manifest:
 curl -sLO https://github.com/cms-opendata-workshop/workshop-payload-kubernetes/raw/master/deployment-http-fileserver.yaml
 ```
 
-Open this file and again adjust the `<NUMBER>`:
+Open this file and again adjust the `apiVersion` to `apps/v1` as the following, also adjust the `<NUMBER>`:
 
 ```yaml
 # deployment-http-fileserver.yaml
