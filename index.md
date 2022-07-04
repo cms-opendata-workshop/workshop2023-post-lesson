@@ -9,20 +9,12 @@ such as the HTCondor installation at CERN and at other research institutions
 as well as the worldwide LHC computing grid (WLCG). Not everyone will have
 these resources available at their own institution, but nowadays anyone can
 get access to computing resources via public cloud vendors.
-This lesson will give you a first taste of running realistic physics analyses
+This lesson will give you prepare you an environment for running realistic physics analyses
 "in the cloud" using Kubernetes (as well as giving you a brief introduction
 to Kubernetes itself).
 
 <!-- this is an html comment -->
 
 {% comment %} This is a comment in Liquid {% endcomment %}
-
-> ## Prerequisites
-> 
-> You should be familiar with Docker
-> [Docker](https://cms-opendata-workshop.github.io/workshop2021-lesson-docker/)
-> by now.
-> 
-{: .prereq}
 
 {% include links.md %}
