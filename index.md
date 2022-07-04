@@ -17,4 +17,14 @@ to Kubernetes itself).
 
 {% comment %} This is a comment in Liquid {% endcomment %}
 
+> ## Prerequisites
+>
+> You should be familiar with 
+> [Docker](https://cms-opendata-workshop.github.io/workshop2021-lesson-docker/)
+> and the 
+> [Shell](https://swcarpentry.github.io/shell-novice/)
+> by now. This material might be outdated
+> 
+{: .prereq}
+
 {% include links.md %}
