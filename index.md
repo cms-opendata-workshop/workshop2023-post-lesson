@@ -18,10 +18,11 @@ to Kubernetes itself).
 {% comment %} This is a comment in Liquid {% endcomment %}
 
 > ## Prerequisites
->
-> We expect you to have followed the largest part of the
-> [CMS Open Data Workshop for Theorists](cms-opendata-workshop.github.io/>2020-09-30-cms-open-data-workshop-for-theorists/)
-> lessons. In particular, you should be familiar with Docker by now.
+> 
+> You should be familiar with Docker
+> [Docker](https://cms-opendata-workshop.github.io/workshop2021-lesson-docker/)
+> by now.
+> 
 {: .prereq}
 
 {% include links.md %}
