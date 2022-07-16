@@ -20,10 +20,9 @@ to Kubernetes itself).
 > ## Prerequisites
 >
 > You should be familiar with 
-> [Docker](https://cms-opendata-workshop.github.io/workshop2021-lesson-docker/)
+> [Docker](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/)
 > and the 
 > [Shell](https://swcarpentry.github.io/shell-novice/)
-> by now. This material might be outdated
 > 
 {: .prereq}
 
