@@ -19,9 +19,10 @@ keypoints:
 > 
 > Keep in mind that [minikube](https://minikube.sigs.k8s.io/docs/start/) quickly sets up a single 
 > local Kubernetes cluster on macOS, Linux, and Windows. 
+> 
 > It is not possible to fetch yaml configuration files from your terminal, so omit the ```wget``` 
-> command and insert the following urls in your browser of preference and create a yaml file with 
-> its content to be able to ```kubectl apply -n argo -f <example.yaml>```.
+> section of the commands and insert the following urls in your browser of preference to create the respective yaml file with 
+> its content, once saved in your local directory proceed to run the ```kubectl apply -n argo -f <example.yaml>``` commands.
 > 
 {: .testimonial}
 
