@@ -17,6 +17,16 @@ If needed you can watch a walkthrough [here](https://youtu.be/RPO6zR12iUc):
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RPO6zR12iUc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+> ## Minikube
+> 
+> If you've opted to use [minikube](https://minikube.sigs.k8s.io/docs/start/), creating a kubernetes cluster is as easy as running:
+> ```bash
+> minikube start
+> ```
+> Feel free to skip to the [next episode](https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/04-demo2/index.html).
+{: .testimonial}
+
+
 ## Creating your own cluster on GKE
 For the hands-on part of this lesson you will not have to create the cluster for yourself, it will be already done for you.  For pedagogical reasons, however, we will show an example of how to do it by hand. The settings below should be good and cheap enough for CMSSW-related workflows.
 
