@@ -11,7 +11,7 @@ keypoints:
 - "It takes just a few clicks to create you own K8s cluster"
 ---
 ## Introduction
-In this demonstration we will show you the very basic way in which you can create a computer cluster (a Kubernetes cluster to be exact) in the cloud so you can do some data processing and analysis using those resources.  In the process we will make sure you learn about the jargon.  During the hands-on session tomorrow, a cluster similar to this one will be provided to you for the exercises.  
+In this demonstration we will show you the very basic way in which you can create a computer cluster (a Kubernetes cluster to be exact) in the cloud so you can do some data processing and analysis using those resources.  In the process we will make sure you learn about the jargon.  During the hands-on session of the workshop (cloud computing), a cluster similar to this one will be provided to you for the exercises.  
 
 If needed you can watch a walkthrough [here](https://youtu.be/RPO6zR12iUc):
 
