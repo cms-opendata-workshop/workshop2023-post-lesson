@@ -15,6 +15,16 @@ keypoints:
 - "Open Data workflows can be run in a commercial cloud environment using modern tools"
 ---
 
+> ## Minikube
+> 
+> Keep in mind that [minikube](https://minikube.sigs.k8s.io/docs/start/) quickly sets up a single 
+> local Kubernetes cluster on macOS, Linux, and Windows. 
+> It is not possible to fetch yaml configuration files from your terminal, so omit the ```wget``` 
+> command and insert the following urls in your browser of preference and create a yaml file with 
+> its content to be able to ```kubectl apply -n argo -f <example.yaml>```.
+> 
+{: .testimonial}
+
 ## Install argo as a workflow engine
 
 While jobs can also be run manually, a workflow engine makes defining and
@@ -22,6 +32,7 @@ submitting jobs easier. In this tutorial, we use
 [argo](https://argoproj.github.io/argo/quick-start/).
 Install it into your working environment with the following commands
 (all commands to be entered into the cloud shell):
+
 
 ```bash
 kubectl create ns argo
@@ -50,14 +61,6 @@ easier.
 > run the command above again starting from the `curl` command.
 >
 {: .callout}
-
-You need to execute the following command so that the argo workflow controller
-has sufficient rights to manage the workflow pods.
-Replace `XXX` with the number for the login credentials you received.
-
-```bash
-kubectl create clusterrolebinding cern-cms-cluster-admin-binding --clusterrole=cluster-admin --user=cms-gXXX@arkivum.com
-```
 
 You can now check that argo is available with
 
