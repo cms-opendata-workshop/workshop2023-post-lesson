@@ -119,7 +119,7 @@ You could create a disk clicking on the web interface above, but lets do it fast
 Create the volume (disk) we are going to use
 
 ```bash
-gcloud compute disks create --size=100GB --zone=us-central1-c gce-nfs-disk-1
+gcloud compute disks create --size=100GB --zone=europe-west1-b gce-nfs-disk-1
 ```
 
 Set up an nfs server for this disk:
