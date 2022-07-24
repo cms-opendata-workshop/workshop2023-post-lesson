@@ -73,13 +73,17 @@ argo version
 
 To test the setup, run a simple test workflow with
 
-```bash
+```
 argo submit -n argo --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
-argo list -n argo
-argo get -n argo @latest
+```
+
+Wait till the yellow light turns green.
+Get the logs with
+
+```
 argo logs -n argo @latest
 ```
-* Wait till the yellow light turns green
+
 * If argo was installed correctly you will have the following:
 ![](../fig/HelloWorld.png)
 
