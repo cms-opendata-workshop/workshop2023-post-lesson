@@ -42,6 +42,7 @@ For the hands-on part of this lesson you will not have to create the cluster for
 * Select GKE Standard
 ![](../fig/SelectGKE.png)
 * Give it a name
+* Change the zone to ```europe-west1-b```
 ![](../fig/BasicClusterName.png)
 * Many ways to configure the cluster, but let's try an efficient one with autoscaling
 * Go to default pool
