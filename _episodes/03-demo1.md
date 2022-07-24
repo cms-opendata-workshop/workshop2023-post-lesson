@@ -30,7 +30,7 @@ If needed you can watch a walkthrough [here](https://youtu.be/RPO6zR12iUc):
 ## Creating your own cluster on GKE
 For the hands-on part of this lesson you will not have to create the cluster for yourself, it will be already done for you.  For pedagogical reasons, however, we will show an example of how to do it by hand. The settings below should be good and cheap enough for CMSSW-related workflows.
 
-> Here you will find some [instructions on how to use preemptible machines](https://docs.google.com/presentation/d/1k-bSGGa7iOCRRgl7jLGrtYhI-M24GcvmUVJkkfRgXIQ/edit?usp=sharing) in GKE.  Preemptible VMs offer similar functionality to Spot VMs, but only last up to 24 hours after creation, this might be taken into account if reducing costs is of your concern.
+> Here you will find some [instructions on how to use preemptible machines](https://cloud.google.com/compute/docs/instances/preemptible) in GKE.  Preemptible VMs offer similar functionality to Spot VMs, but only last up to 24 hours after creation, this might be taken into account if reducing costs is of your concern.
 {: .testimonial}
 
 * Get to the Console
