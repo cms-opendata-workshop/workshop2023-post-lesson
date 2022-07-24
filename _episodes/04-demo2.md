@@ -69,22 +69,6 @@ You can now check that argo is available with
 argo version
 ```
 
-We need to apply a small patch to the default argo config. Create a file called
-`patch-workflow-controller-configmap.yaml`:
-
-~~~
-data:
-  artifactRepository: |
-    archiveLogs: false
-~~~
-{: .language-yaml}
-
-Apply:
-
-```bash
-kubectl patch configmap workflow-controller-configmap -n argo --patch "$(cat patch-workflow-controller-configmap.yaml)"
-```
-
 ## Run a simple test workflow
 
 To test the setup, run a simple test workflow with
