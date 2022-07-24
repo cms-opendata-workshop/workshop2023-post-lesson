@@ -203,7 +203,7 @@ spec:
   volumes:
     - name: task-pv-storage
       persistentVolumeClaim:
-        claimName: nfs-<NUMBER>
+        claimName: nfs-1
   templates:
   - name: test-hostpath
     script:
@@ -256,7 +256,7 @@ spec:
   volumes:
     - name: task-pv-storage
       persistentVolumeClaim:
-        claimName: nfs-<NUMBER>
+        claimName: nfs-1
   containers:
     - name: pv-container
       image: busybox
