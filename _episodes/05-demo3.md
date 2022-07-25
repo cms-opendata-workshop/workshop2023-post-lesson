@@ -12,6 +12,12 @@ keypoints:
 - "With a simple but a tight yaml structure, a full-blown analysis can be performed using the Argo tool on a K8s cluster."
 ---
 
+> ## Minikube
+>
+> This episode is relevant when working on the Google Kubernetes Engine, as will be done during the hands-on session of the workshop. 
+> If you are going through these pre-exercises on minikube, just read this as part of your information, but do not work through it.
+>
+{: .testimonial}
 
 ## Accessing files via http
 
