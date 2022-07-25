@@ -75,7 +75,7 @@ Get the logs with</p>
               
 <p>If argo was installed correctly you will have the following:</p>      
               
-<img scr="../fig/HelloWorld.png" alt="Hello World">
+<img scr="fig/HelloWorld.png" alt="Hello World 1">
               
 <p>Please mind that it is important to delete your workflows once they have completed. If you do not do this, the pods associated with the workflow will remain scheduled in the cluster, which might lead to additional charges. You will learn how to automatically remove them later.</p>  
               
