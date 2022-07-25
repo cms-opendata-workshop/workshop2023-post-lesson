@@ -263,7 +263,24 @@ Get the logs with</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo logs -n argo @latest
 </code></pre></div></div>              
               
-<p>If argo was installed correctly you will have the following: IMAGE</p>      
+<p>If argo was installed correctly you will have the following:</p>
+              
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello-world-ml5bf: time="2022-07-25T12:33:54.295Z" level=info msg="capturing logs" argo=true
+hello-world-ml5bf:  _____________
+hello-world-ml5bf: < hello world >
+hello-world-ml5bf:  -------------
+hello-world-ml5bf:     \
+hello-world-ml5bf:      \
+hello-world-ml5bf:       \
+hello-world-ml5bf:                     ##        .
+hello-world-ml5bf:               ## ## ##       ==
+hello-world-ml5bf:            ## ## ## ##      ===
+hello-world-ml5bf:        /""""""""""""""""___/ ===
+hello-world-ml5bf:   ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
+hello-world-ml5bf:        \______ o          __/
+hello-world-ml5bf:         \    \        __/
+hello-world-ml5bf:           \____\______/
+</code></pre></div></div>
               
 <p>Please mind that it is important to delete your workflows once they have completed. If you do not do this, the pods associated with the workflow will remain scheduled in the cluster, which might lead to additional charges. You will learn how to automatically remove them later.</p>  
               
