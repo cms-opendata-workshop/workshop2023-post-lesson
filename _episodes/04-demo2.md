@@ -73,7 +73,9 @@ Get the logs with</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo logs -n argo @latest
 </code></pre></div></div>              
               
-<p>If argo was installed correctly you will have the following: IMAGE</p>      
+<p>If argo was installed correctly you will have the following:</p>      
+              
+<img scr="../fig/HelloWorld.png" alt="Hello World">
               
 <p>Please mind that it is important to delete your workflows once they have completed. If you do not do this, the pods associated with the workflow will remain scheduled in the cluster, which might lead to additional charges. You will learn how to automatically remove them later.</p>  
               
