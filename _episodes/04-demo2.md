@@ -240,7 +240,26 @@ kubectl cp  pv-pod:/mnt/data /tmp/poddata -n argo
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 kubectl create ns argo
 kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
+
+# Download the binary
+curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+sudo mv ./argo-linux-amd64 /usr/local/bin/argo
 </code></pre></div></div>
+
+<p>This will also install the argo binary, which makes managing the workflows
+easier.</p>
+              
+<blockquote class="testimonial">
+  <p>Unless argo is already installed once on the local computer, when coming back to your computer, the <code class="language-plaintext highlighter-rouge">argo</code> command is not found, to solvent this run the command above again starting from the <code class="language-plaintext highlighter-rouge">curl</code> command.</p>
+</blockquote>
 
 <p>This will also install the argo binary, which makes managing the workflows
 easier.</p>
