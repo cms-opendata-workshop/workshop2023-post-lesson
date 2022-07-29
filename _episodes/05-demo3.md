@@ -144,14 +144,13 @@ Check the services running and the associated IP addresses:
 kubectl get svc -n argo
 kubectl -n argo port-forward deployment/argo-server 2746:2746
 ```
-It will start fowarding port, to not inturrupt this open a new window, after a couple minutes it will be handling connection.
-Open in new terminal window and run: 
+Once it has started fowarding the port we will have to manually enable the port, to do this open a new cloud shell tab and run the following command:
 
 ```bash
 lynx https://localhost:2746
 ```
 
-This will permit that the port is accessed, finally patch the service with:
+Access it and then quit. Return to the previous tab and you will see that the port is being accessed and handled, you can exit with ```^C``` and finally patch the service with:
 
 ```bash
 kubectl patch svc argo-server -n argo -p '{"spec": {"type": "LoadBalancer"}}'
