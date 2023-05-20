@@ -3,15 +3,7 @@ layout: lesson
 root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
-A physics analysis usually encompasses running over hundreds of gigabytes of
-data. At CMS, this is usually performed using high-throughput batch systems
-such as the HTCondor installation at CERN and at other research institutions
-as well as the worldwide LHC computing grid (WLCG). Not everyone will have
-these resources available at their own institution, but nowadays anyone can
-get access to computing resources via public cloud vendors.
-This lesson will give you prepare you an environment for running realistic physics analyses
-"in the cloud" using Kubernetes (as well as giving you a brief introduction
-to Kubernetes itself).
+Physics analyses in the field of particle physics often involve processing large amounts of data, typically spanning hundreds of gigabytes. Traditionally, these analyses have been performed using high-throughput batch systems like HTCondor, which is installed at CERN and various research institutions. Additionally, the worldwide LHC computing grid (WLCG) has been instrumental in providing distributed computing resources for such analyses. However, not everyone may have access to these resources at their own institutions. To overcome this limitation, the CMS OpenData workshop in 2023 aims to enable researchers to utilize computing resources through public cloud vendors.
 
 <!-- this is an html comment -->
 
@@ -19,10 +11,8 @@ to Kubernetes itself).
 
 > ## Prerequisites
 >
-> You should be familiar with 
-> [Docker](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/)
-> and the 
-> [Shell](https://swcarpentry.github.io/shell-novice/)
+> You should be familiar with containers, images and Docker ([Docker Lesson](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/))
+> and the [Unix Shell](https://swcarpentry.github.io/shell-novice/)
 > 
 {: .prereq}
 
