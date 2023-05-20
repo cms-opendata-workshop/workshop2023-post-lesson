@@ -11,8 +11,7 @@ Physics analyses in the field of particle physics often involve processing large
 
 > ## Prerequisites
 >
-> You should be familiar with containers, images and Docker ([Docker Lesson](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/))
-> and the [Unix Shell](https://swcarpentry.github.io/shell-novice/)
+> You should be familiar with containers, images, Docker (check the [Docker Lesson](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/)) and the [Unix Shell](https://swcarpentry.github.io/shell-novice/)
 > 
 {: .prereq}
 
