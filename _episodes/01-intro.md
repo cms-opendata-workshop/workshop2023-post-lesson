@@ -17,9 +17,9 @@ keypoints:
 ---
 
 ## Introduction:
-Throughout this workshop, you have become familiar with Docker containers and their ability to function as isolated, efficient virtual machines running on a host machine. Considering this, imagine the potential of maximizing hardware resources by running multiple CMSSW (Compact Muon Solenoid Software) open data containers on a single desktop. For example, running 10 CMSSW containers, each processing a single root file, skimming through entire datasets, in parallel, simultaneously, and on your own machine. Scaling up to a larger number of machines introduces new challenges. How would you manage the software installation across all these machines? Do you have sufficient resources to handle these tasks? How would you effectively manage and monitor all the containers running across the distributed infrastructure?
+Throughout this workshop, you have become familiar with Docker containers and their ability to function as isolated, efficient virtual machines running on a host machine. Considering this, imagine the potential of maximizing hardware resources by running multiple CMSSW (Compact Muon Solenoid Software) open data containers on a single desktop. For example, running 10 CMSSW containers, each processing a single root file, skimming through entire datasets, in parallel, simultaneously, and on your own machine. Scaling up to a larger number of machines introduces new challenges. _How would you manage the software installation across all these machines? Do you have sufficient resources to handle these tasks? How would you effectively manage and monitor all the containers running across the distributed infrastructure?_
 
-These questions highlight the need for a robust orchestration system like **Kubernetes**. By leveraging Kubernetes, you can streamline and automate the deployment, scaling, and management of containers across multiple machines. Kubernetes provides a unified platform to address these challenges and ensures efficient utilization of computing resources, enabling researchers to focus on their analysis tasks rather than infrastructure management.
+These questions highlight the need for a robust orchestration system like Kubernetes. By leveraging Kubernetes, you can streamline and automate the deployment, scaling, and management of containers across multiple machines. Kubernetes provides a unified platform to address these challenges and ensures efficient utilization of computing resources, enabling researchers to focus on their analysis tasks rather than infrastructure management.
 
 In the upcoming sections of this workshop, we will delve into the practical aspects of using Kubernetes for managing CMSSW containers and orchestrating data processing workflows. We will explore techniques for software deployment, container management, and effective utilization of distributed resources. By the end of the workshop, you will have gained the knowledge and skills to leverage Kubernetes for efficient and scalable physics data analysis.
 
@@ -28,35 +28,37 @@ Kubernetes is a powerful container orchestration platform that facilitates the d
 
 <img src="https://imgopt.infoq.com/fit-in/1200x2400/filters:quality(80)/filters:no_upscale()/articles/distributed-systems-kubernetes/en/resources/13image006-1616431699209.jpg" width="500">
 
+## K8s API
+The Kubernetes API (Application Programming Interface) is a set of rules and protocols that allows users and external systems to interact with a Kubernetes cluster. It serves as the primary interface for managing and controlling various aspects of the cluster, including deploying applications, managing resources, and monitoring the cluster's state. Users can interact with the API using various methods, such as command-line tools (e.g., **kubectl**), programming languages (e.g., Python, Go), or through user interfaces built on top of the API.
+
+<img src="https://collabnix.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-22-at-10.52.54-AM.png" width="400">
+
 ### Kubernetes Components
 When deploying Kubernetes, you establish a cluster that comprises two main components: masters and workers.  
 
-* Master Nodes: 
+* **Master Nodes: **
 Kubernetes masters are responsible for managing the control plane of the cluster. They coordinate and orchestrate the activities of the worker nodes and ensure the proper functioning of the entire cluster. 
 
-* Worker Nodes: 
+* **Worker Nodes: **
 Worker nodes are the machines within the Kubernetes cluster that execute the actual application workloads. They host and run the Pods, which are the fundamental units of deployment in Kubernetes. Each Pod consists of one or more containers that work together to provide the desired functionality.
 
 By separating the responsibilities of the masters and workers, Kubernetes ensures a distributed and scalable architecture. The masters focus on managing the cluster's control plane and coordinating the overall state, while the workers handle the execution of application workloads. This division of labor allows for efficient scaling, fault tolerance, and high availability in a Kubernetes cluster.
 
-* Load Balancer: 
-In a Kubernetes cluster, a load balancer is a component that ensures the even distribution of incoming network traffic across multiple instances of a service or application. It acts as a central entry point for external traffic and routes requests to the appropriate backend Pods or services. By incorporating a load balancer into the Kubernetes architecture, you can achieve better performance, fault tolerance, and overall stability for your applications.
-
-<img src="https://1.bp.blogspot.com/-kCijQkEkmA8/X9ctU83lcJI/AAAAAAAAF5U/GayBI9yQ-PsUuGI9L4Mf8dJwsByp6g8WQCLcBGAsYHQ/s1192/k8%2Barchitecture.PNG" width="500">
+<img src="https://spaceliftio.wpcomstaging.com/wp-content/uploads/2022/12/kubernetes-architecture-diagram.png" width="500">
 
 ### Nodes Components
 Kubernetes nodes, also referred to as **worker nodes** or simply nodes, are the individual machines or virtual machines that make up a Kubernetes cluster. These nodes are responsible for executing the actual workloads and running the containers that make up your applications. Each node in a Kubernetes cluster plays a crucial role in the distributed system and contributes to the overall functioning of the cluster. Here are the key characteristics and components of Kubernetes nodes:
 
-* Pods: 
+* **Pods:**
 In the Kubernetes world, pods are the smallest computing units. A pod represents a group of one or more containers that are deployed together on a node. Pods are fundamental to understanding Kubernetes architecture. However, when working with services, we typically work with a higher-level abstraction called deployments. Deployments automatically manage the creation and scaling of pods on our behalf.
 
-* Kubelet: 
+* **Kubelet:**
 The kubelet is the primary "node agent" that runs on each node in the Kubernetes cluster.  It interacts with the cluster's control plane to ensure that the containers described in the PodSpecs (pod specifications) are running and healthy.
 
-* Kube-Proxy: 
+* **Kube-Proxy:**
 Kube-proxy is responsible for network proxying and load balancing within the Kubernetes cluster.
 
-* Container Runtime: 
+* **Container Runtime:**
 The container runtime is responsible for managing the low-level operations of the containers, including image management, container creation, networking, and storage.
 
 <img src="https://res.cloudinary.com/escalante-rep/image/upload/v1589159144/i14yfj2jn5nm70bzekxu.jpg" width="600">
