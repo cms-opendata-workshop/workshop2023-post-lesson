@@ -5,11 +5,9 @@ exercises: 0
 questions:
 - "What is Kubernetes?"
 - "What is a Kubernetes cluster and why do I need one?"
-- "What is Argo?"
 objectives:
 - "Learn the very basics of Kubernetes"
 - "Learn a bit about the architecture of a Kubernetes cluster"
-- "Learn the very basics of Argo"
 keypoints:
 - "Kubernetes is an orchestrator of containers. It is most useful when it is run in a cluster of computers."
 - "Commercial K8s clusters are a good option for large computing needs."
@@ -28,29 +26,32 @@ Kubernetes is a powerful container orchestration platform that facilitates the d
 
 <img src="https://imgopt.infoq.com/fit-in/1200x2400/filters:quality(80)/filters:no_upscale()/articles/distributed-systems-kubernetes/en/resources/13image006-1616431699209.jpg" width="500">
 
-## K8s API
+### K8s API
 The Kubernetes API (Application Programming Interface) is a set of rules and protocols that allows users and external systems to interact with a Kubernetes cluster. It serves as the primary interface for managing and controlling various aspects of the cluster, including deploying applications, managing resources, and monitoring the cluster's state. Users can interact with the API using various methods, such as command-line tools (e.g., **kubectl**), programming languages (e.g., Python, Go), or through user interfaces built on top of the API.
 
 <img src="https://collabnix.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-22-at-10.52.54-AM.png" width="400">
 
-### Kubernetes Components
+## Kubernetes Components
 When deploying Kubernetes, you establish a cluster that comprises two main components: masters and workers.  
 
-* **Master Nodes: **
+* **Master Nodes:**
 Kubernetes masters are responsible for managing the control plane of the cluster. They coordinate and orchestrate the activities of the worker nodes and ensure the proper functioning of the entire cluster. 
 
-* **Worker Nodes: **
+* **Worker Nodes:**
 Worker nodes are the machines within the Kubernetes cluster that execute the actual application workloads. They host and run the Pods, which are the fundamental units of deployment in Kubernetes. Each Pod consists of one or more containers that work together to provide the desired functionality.
 
 By separating the responsibilities of the masters and workers, Kubernetes ensures a distributed and scalable architecture. The masters focus on managing the cluster's control plane and coordinating the overall state, while the workers handle the execution of application workloads. This division of labor allows for efficient scaling, fault tolerance, and high availability in a Kubernetes cluster.
 
-<img src="https://spaceliftio.wpcomstaging.com/wp-content/uploads/2022/12/kubernetes-architecture-diagram.png" width="500">
+<img src="https://spaceliftio.wpcomstaging.com/wp-content/uploads/2022/12/kubernetes-architecture-diagram.png" width="600">
 
 ### Nodes Components
 Kubernetes nodes, also referred to as **worker nodes** or simply nodes, are the individual machines or virtual machines that make up a Kubernetes cluster. These nodes are responsible for executing the actual workloads and running the containers that make up your applications. Each node in a Kubernetes cluster plays a crucial role in the distributed system and contributes to the overall functioning of the cluster. Here are the key characteristics and components of Kubernetes nodes:
 
 * **Pods:**
 In the Kubernetes world, pods are the smallest computing units. A pod represents a group of one or more containers that are deployed together on a node. Pods are fundamental to understanding Kubernetes architecture. However, when working with services, we typically work with a higher-level abstraction called deployments. Deployments automatically manage the creation and scaling of pods on our behalf.
+
+* **Containers:**
+Containers are lightweight and isolated environments that package applications and their dependencies, providing consistency and portability across different environments. In the context of pods, containers are the individual units that encapsulate the application components. These containers are typically extracted from **Docker images**, which are portable and self-contained units that include the application code, runtime, system tools, and libraries required to run the application.
 
 * **Kubelet:**
 The kubelet is the primary "node agent" that runs on each node in the Kubernetes cluster.  It interacts with the cluster's control plane to ensure that the containers described in the PodSpecs (pod specifications) are running and healthy.
@@ -65,7 +66,7 @@ The container runtime is responsible for managing the low-level operations of th
 
 Nodes form the backbone of a Kubernetes cluster, providing the computational resources and infrastructure needed to run applications. They collaborate with the master components, such as the API server and controller manager, to ensure the proper orchestration, scheduling, and management of containers within the cluster.
 
-### Autoscaling
+## Autoscaling
 Autoscaling is a powerful feature supported by Kubernetes that allows you to optimize the allocation of resources on your nodes based on the actual usage patterns of your applications. Kubernetes enables you to automatically scale up or down the number of nodes in your cluster, as well as adjust the CPU and memory resources allocated to those nodes.
 
 By utilizing autoscaling, you can ensure that your applications have the necessary resources to handle increased workloads during peak times, while also dynamically reducing resource allocation during periods of lower demand. This flexibility not only improves performance and responsiveness but also helps optimize costs by allowing you to pay only for the resources you actually need. If you want to learn about pricing for this workshop's cloud provider, check out Google's [Compute Engine pricing](https://cloud.google.com/compute/all-pricing).
