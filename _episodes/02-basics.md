@@ -8,9 +8,9 @@ questions:
 - "What is Argo workflows?"
 
 objectives:
-- "Lear what the kubectl command can do"
+- "Learn what the kubectl command can do"
 - "Appreciate the necessity for the Argo workflows tool (or similar)"
-- "Lear how to set up different services/resources to get the most of your cluster"
+- "Learn how to set up different services/resources to get the most of your cluster"
 
 keypoints:
 - "`kubectl` is the ruler of GKE"
@@ -18,15 +18,12 @@ keypoints:
 - "To be able to write, read and extract data, a few services/resources need to be set up on the GCP"
 ---
 
-## K8s API
-The Kubernetes API (Application Programming Interface) is a set of rules and protocols that allows users and external systems to interact with a Kubernetes cluster. It serves as the primary interface for managing and controlling various aspects of the cluster, including deploying applications, managing resources, and monitoring the cluster's state.
+## K8s - Imperative vs Declarative programming
+In the context of Kubernetes, imperative and declarative are two different paradigms used to define and manage the desired state of resources within a cluster. While imperative commands are useful for ad-hoc tasks or interactive exploration, the declarative approach is more suitable for managing and maintaining resources in a Kubernetes cluster efficiently. Let's explore each approach! But first, we need a tool to interact with our cluster.
 
-The Kubernetes API provides a declarative model, where users can define the desired state of the cluster and the API server handles the necessary actions to achieve that state. Users can interact with the API using various methods, such as command-line tools (e.g., kubectl), programming languages (e.g., Python, Go), or through user interfaces built on top of the API.
-
-<img src="https://collabnix.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-22-at-10.52.54-AM.png" width="400">
+<img src="https://ucarecdn.com/024d46aa-b898-4713-b3a7-2c095c94b00e/" width="400">
 
 ### Kubectl
-
 The kubectl command-line tool is a powerful utility provided by Kubernetes that allows you to interact with and manage Kubernetes clusters. Use the following syntax to run kubectl commands from your terminal window:
 
 ```bash
@@ -39,15 +36,8 @@ Where:
 * **NAME:** Specifies the name of the specific resource you want to operate on.
 * **flags:** These are optional flags that modify the behavior of the command. Flags can be used to specify additional parameters, control output formats, apply labels, set resource limits, etc. Flags are specific to each command and can be listed by running `kubectl [command] --help`.
 
-> See the kubectl [installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
-> <br/>
-> See the kubectl [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
+> Check out the kubectl [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 {: .testimonial}
-
-## K8s - Imperative vs Declarative programming
-In the context of Kubernetes, imperative and declarative are two different paradigms used to define and manage the desired state of resources within a cluster. While imperative commands are useful for ad-hoc tasks or interactive exploration, the declarative approach is more suitable for managing and maintaining resources in a Kubernetes cluster efficiently. Let's explore each approach!
-
-<img src="https://ucarecdn.com/024d46aa-b898-4713-b3a7-2c095c94b00e/" width="400">
 
 ### Imperative Approach
 In the imperative approach, you specify the exact sequence of commands or actions to be performed to create or modify Kubernetes resources. You interact with the Kubernetes API by issuing explicit instructions.
