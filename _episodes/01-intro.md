@@ -16,38 +16,55 @@ keypoints:
 - "We can run our containerized CMSSW jobs and subsequent analysis workflows in a K8s cluster."
 ---
 
-## Introduction
+## Introduction:
+Kubernetes, initially developed by Google and now maintained by the Cloud Native Computing Foundation, is a powerful container orchestration system. Its primary objective is to efficiently schedule services to run on a cluster of computers while abstracting away the complexities of managing the underlying infrastructure. Kubernetes offers features such as replication management, resource allocation, and fault tolerance, enabling applications to scale and recover quickly.
 
-Kubernetes is a container orchestration system open sourced by Google. Its main purpose is to schedule services to run on a cluster of computers while abstracting away the existence of the cluster from the services. Kubernetes is now maintained by the Cloud Native Computing Foundation, which is a part of the Linux Foundation. Kubernetes can flexibly handle replication, impose resource limits, and recover quickly from failures.
+### Expanding on Docker Containers:
+Throughout this workshop, you have become familiar with Docker containers and their ability to function as isolated, efficient virtual machines running on a host machine. Considering this, imagine the potential of maximizing hardware resources by running multiple CMSSW (Compact Muon Solenoid Software) open data containers on a single desktop. For example, running 10 CMSSW containers, each processing a single root file, skimming through entire datasets, in parallel, simultaneously, and on your own machine. Scaling up to a larger number of machines introduces new challenges. How would you manage the software installation across all these machines? Do you have sufficient resources to handle these tasks? How would you effectively manage and monitor all the containers running across the distributed infrastructure?
 
-Most of you have been working with Docker containers throughout this workshop.  As you know now, one could see these Docker containers like isolated machines that can run on a host machine in a very efficient way.  Your desktop or laptop could actually run several of these containers if enough resources are available.  For instance, you could think that one can maximize the hardware resources by running multiple CMSSW open data containers in one desktop.  Imagine, if you could run 10 CMSSW containers (each over a single root file) at the same time in a single physical machine, then it will take you 10 times less time to skim a full dataset.  
+These questions highlight the need for a robust orchestration system like **Kubernetes**. By leveraging Kubernetes, you can streamline and automate the deployment, scaling, and management of containers across multiple machines. Kubernetes provides a unified platform to address these challenges and ensures efficient utilization of computing resources, enabling researchers to focus on their analysis tasks rather than infrastructure management.
 
-Now, if you had more machines available, let's say 3 or 4, and in each one of them you could run 10 containers, that will certainly speed up the data processing (specially the first stage in our analysis flow example, which we will see later)  Now, if you could have access to many more machines, then a few problems may appear.  For instance, how would you install the software required in all those machines? Would there be enough personpower to take care of that?  How would you take care of, and babysit all those containers?
+In the upcoming sections of this workshop, we will delve into the practical aspects of using Kubernetes for managing CMSSW containers and orchestrating data processing workflows. We will explore techniques for software deployment, container management, and effective utilization of distributed resources. By the end of the workshop, you will have gained the knowledge and skills to leverage Kubernetes for efficient and scalable physics data analysis.
 
-## Kubernetes (K8s)
-A Kubernetes cluster consists of "master" nodes and "worker" nodes. In short, master nodes share state to manage the cluster and schedule jobs to run on workers. It is considered best practice to run an odd number of masters.
+## Kubernetes (K8s) - Microservices Concepts
+Kubernetes is a powerful container orchestration platform that facilitates the deployment, scaling, and management of microservices-based applications. Microservices architecture is an approach to developing software applications as a collection of small, independent services that work together to form a larger application. Kubernetes provides essential features and functionality to support the deployment and management of microservices.
 
 ### Kubernetes Components
-When you deploy Kubernetes, you get a cluster. A Kubernetes cluster consists of a set of worker machines, called nodes. The worker nodes host the Pods that are the components of the application workload.
+When deploying Kubernetes, you establish a cluster that comprises two main components: masters and workers.  
 
-* Masters
-Kubernetes masters share state via etcd, a distributed key-value store (KVS) implementing the Raft protocol. Do note that the state stored in etcd is scheduling state, service locations, and other cluster metadata; it does not keep state for the services running on the cluster.
+* Master Nodes
+Kubernetes masters are responsible for managing the control plane of the cluster. They coordinate and orchestrate the activities of the worker nodes and ensure the proper functioning of the entire cluster. 
 
-* Workers
-While master nodes are constantly sharing data, managing the control plane (routing inside the Kubernetes cluster), and scheduling services, workers primarily run pods.
+* Worker Nodes
+Worker nodes are the machines within the Kubernetes cluster that execute the actual application workloads. They host and run the Pods, which are the fundamental units of deployment in Kubernetes. Each Pod consists of one or more containers that work together to provide the desired functionality.
+
+By separating the responsibilities of the masters and workers, Kubernetes ensures a distributed and scalable architecture. The masters focus on managing the cluster's control plane and coordinating the overall state, while the workers handle the execution of application workloads. This division of labor allows for efficient scaling, fault tolerance, and high availability in a Kubernetes cluster.
+
+* Load Balancer
+In a Kubernetes cluster, a load balancer is a component that ensures the even distribution of incoming network traffic across multiple instances of a service or application. It acts as a central entry point for external traffic and routes requests to the appropriate backend Pods or services. By incorporating a load balancer into the Kubernetes architecture, you can achieve better performance, fault tolerance, and overall stability for your applications.
 
 ![](https://1.bp.blogspot.com/-kCijQkEkmA8/X9ctU83lcJI/AAAAAAAAF5U/GayBI9yQ-PsUuGI9L4Mf8dJwsByp6g8WQCLcBGAsYHQ/s1192/k8%2Barchitecture.PNG)
 
 ### Nodes Components
+Kubernetes nodes, also referred to as **worker nodes** or simply nodes, are the individual machines or virtual machines that make up a Kubernetes cluster. These nodes are responsible for executing the actual workloads and running the containers that make up your applications. Each node in a Kubernetes cluster plays a crucial role in the distributed system and contributes to the overall functioning of the cluster. Here are the key characteristics and components of Kubernetes nodes:
+
 * Pods 
-In the Kubernetes world, pods are the smallest computing unit. A pod is made up of one or more containers. While pods are essential for understanding Kubernetes, when writing services we don't actually deal in pods but one further abstraction, deployments, which create pods for us|
+In the Kubernetes world, pods are the smallest computing units. A pod represents a group of one or more containers that are deployed together on a node. Pods are fundamental to understanding Kubernetes architecture. However, when working with services, we typically work with a higher-level abstraction called deployments. Deployments automatically manage the creation and scaling of pods on our behalf.
+
 * Kubelet 
-The kubelet is the primary "node agent" that runs on each node.The kubelet takes a set of PodSpecs and ensures that the containers described in those PodSpecs are running and healthy. 
+The kubelet is the primary "node agent" that runs on each node in the Kubernetes cluster.  It interacts with the cluster's control plane to ensure that the containers described in the PodSpecs (pod specifications) are running and healthy.
+
 * Kube-Proxy 
-It reflects the services defined in the cluster and manages the rules to load-balance requests to a service’s backend pods.
+Kube-proxy is responsible for network proxying and load balancing within the Kubernetes cluster.
+
+* Container Runtime
+The container runtime is responsible for managing the low-level operations of the containers, including image management, container creation, networking, and storage.
 
 ![](https://res.cloudinary.com/escalante-rep/image/upload/v1589159144/i14yfj2jn5nm70bzekxu.jpg)
 
+Nodes form the backbone of a Kubernetes cluster, providing the computational resources and infrastructure needed to run applications. They collaborate with the master components, such as the API server and controller manager, to ensure the proper orchestration, scheduling, and management of containers within the cluster.
+
 ### Autoscaling
-Kubernetes supports autoscaling to optimise your nodes’ resources as wll as adjust CPU and memory to meet your application’s real usage. When you need to save some money, you can scale down. Probably you want to pay for what you use, keep only with the resources when you need them
-If you want to learn about pricing, ckeck the next link: [Google-cloud](https://cloud.google.com/compute/all-pricing)
+Autoscaling is a powerful feature supported by Kubernetes that allows you to optimize the allocation of resources on your nodes based on the actual usage patterns of your applications. Kubernetes enables you to automatically scale up or down the number of nodes in your cluster, as well as adjust the CPU and memory resources allocated to those nodes.
+
+By utilizing autoscaling, you can ensure that your applications have the necessary resources to handle increased workloads during peak times, while also dynamically reducing resource allocation during periods of lower demand. This flexibility not only improves performance and responsiveness but also helps optimize costs by allowing you to pay only for the resources you actually need. If you want to learn about pricing, ckeck the next link: [Google-cloud](https://cloud.google.com/compute/all-pricing)
