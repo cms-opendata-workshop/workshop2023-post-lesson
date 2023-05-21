@@ -5,7 +5,6 @@ exercises: 0
 questions:
 - "What is Kubectl?"
 - "How to use Kubectl commands?"
-- "What is Argo workflows?"
 
 objectives:
 - "Learn what the kubectl command can do"
