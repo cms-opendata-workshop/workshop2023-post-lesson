@@ -64,7 +64,7 @@ The container runtime is responsible for managing the low-level operations of th
 
 <img src="https://res.cloudinary.com/escalante-rep/image/upload/v1589159144/i14yfj2jn5nm70bzekxu.jpg" width="600">
 
-Nodes form the backbone of a Kubernetes cluster, providing the computational resources and infrastructure needed to run applications. They collaborate with the master components, such as the API server and controller manager, to ensure the proper orchestration, scheduling, and management of containers within the cluster.
+Nodes form the backbone of a Kubernetes cluster, offering the necessary computational resources for running applications. Working in collaboration with the master components, nodes play a crucial role in _orchestrating, scheduling, and managing_ the lifecycle of containers and pods. By hosting and executing pods, nodes effectively utilize their compute resources, ensuring optimal execution, resource allocation, and scalability. With Kubernetes' intelligent scheduling capabilities, containers are seamlessly distributed across nodes, enabling efficient resource utilization and facilitating fault tolerance in a distributed environment.
 
 ## Autoscaling
 Autoscaling is a powerful feature supported by Kubernetes that allows you to optimize the allocation of resources on your nodes based on the actual usage patterns of your applications. Kubernetes enables you to automatically scale up or down the number of nodes in your cluster, as well as adjust the CPU and memory resources allocated to those nodes.
