@@ -3,8 +3,8 @@ title: "Getting started with Argo and Kubectl"
 teaching: 10
 exercises: 0
 questions:
+- "What is Kubectl?"
 - "How to use Kubectl commands?"
-- "What is kubectl?"
 - "What is Argo workflows?"
 
 objectives:
@@ -18,27 +18,79 @@ keypoints:
 - "To be able to write, read and extract data, a few services/resources need to be set up on the GCP"
 ---
 
-## The `kubectl` command
-Kubernetes provides a kubectl for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.
-Use the following syntax to run kubectl commands from your terminal window:
+## K8s API
+The Kubernetes API (Application Programming Interface) is a set of rules and protocols that allows users and external systems to interact with a Kubernetes cluster. It serves as the primary interface for managing and controlling various aspects of the cluster, including deploying applications, managing resources, and monitoring the cluster's state.
+
+The Kubernetes API provides a declarative model, where users can define the desired state of the cluster and the API server handles the necessary actions to achieve that state. Users can interact with the API using various methods, such as command-line tools (e.g., kubectl), programming languages (e.g., Python, Go), or through user interfaces built on top of the API.
+
+![](https://collabnix.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-22-at-10.52.54-AM.png)
+
+### The `kubectl` command
+
+The kubectl command-line tool is a powerful utility provided by Kubernetes that allows you to interact with and manage Kubernetes clusters. Use the following syntax to run kubectl commands from your terminal window:
 
 ```bash
 kubectl [command] [TYPE] [NAME] [flags]
 ```
 
-where ```command ```, ```TYPE```, ```NAME```, and ```flags``` are:
-
+Where:
 ```command:``` Specifies the operation that you want to perform on one or more resources, for example create, get, describe, delete.
-<br />```TYPE:``` Specifies the resource type.
-<br />```NAME:``` Specifies the name of the resource. 
-<br /> ```flags:```Specifies optional flags. 
-<br />
-<br />For installation instructions, see [Installing kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl); for a quick guide:
+<br/>
+```TYPE:``` Specifies the resource type.
+<br/>
+```NAME:``` Specifies the name of the resource. 
+<br/>
+```flags:```Specifies optional flags. 
+<br/>
+<br/>
+* See [kubectl installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
+* See the [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
-* See the [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
-* The `kubectl` command is the main tool for interacting with your K8s cluster. You will use it to do essentially anything in the cluster. [Here](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) is the official *cheatsheet*, which is very useful but already very long.
+## K8s - Declarative VS Imperative programming
+In the context of Kubernetes, imperative and declarative are two different ways to define and manage the desired state of resources within a cluster.
+* Imperative Approach: 
+In the imperative approach, you specify the exact sequence of commands or actions to be performed to create or modify Kubernetes resources. You interact with the Kubernetes API by issuing explicit instructions.
 
-Let's run a few examples.
+For example, using the kubectl command-line tool, you might create a deployment imperatively with the following command:
+
+```bash
+kubectl create deployment my-app --image=my-image:v1 --replicas=3
+```
+
+* Declarative Approach: 
+In the declarative approach, you define the desired state of Kubernetes resources in a declarative configuration file (e.g., **YAML** or JSON). Rather than specifying the steps to achieve that state, you describe the desired outcome and let Kubernetes handle the internal details.
+
+For example, a declarative definition of a deployment might look like this:
+```yaml
+# File name: deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: my-image:v1
+```
+
+You apply this configuration using the kubectl apply command:
+```bash
+kubectl apply -f deployment.yaml
+```
+
+The declarative approach is the recommended way to manage resources in Kubernetes. It promotes consistency, reproducibility, and automation. You can easily version control the configuration files, track changes over time, and collaborate with team members more effectively.
+
+
+## Let's run a few examples.
 
 * Get the status of the nodes in your cluster:
 
