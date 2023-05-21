@@ -59,7 +59,7 @@ Kube-proxy is responsible for network proxying and load balancing within the Kub
 * Container Runtime: 
 The container runtime is responsible for managing the low-level operations of the containers, including image management, container creation, networking, and storage.
 
-<img src="https://res.cloudinary.com/escalante-rep/image/upload/v1589159144/i14yfj2jn5nm70bzekxu.jpg" width="500">
+<img src="https://res.cloudinary.com/escalante-rep/image/upload/v1589159144/i14yfj2jn5nm70bzekxu.jpg" width="600">
 
 Nodes form the backbone of a Kubernetes cluster, providing the computational resources and infrastructure needed to run applications. They collaborate with the master components, such as the API server and controller manager, to ensure the proper orchestration, scheduling, and management of containers within the cluster.
 
