@@ -43,7 +43,7 @@ By separating the responsibilities of the masters and workers, Kubernetes ensure
 * Load Balancer: 
 In a Kubernetes cluster, a load balancer is a component that ensures the even distribution of incoming network traffic across multiple instances of a service or application. It acts as a central entry point for external traffic and routes requests to the appropriate backend Pods or services. By incorporating a load balancer into the Kubernetes architecture, you can achieve better performance, fault tolerance, and overall stability for your applications.
 
-![](https://1.bp.blogspot.com/-kCijQkEkmA8/X9ctU83lcJI/AAAAAAAAF5U/GayBI9yQ-PsUuGI9L4Mf8dJwsByp6g8WQCLcBGAsYHQ/s1192/k8%2Barchitecture.PNG)
+<img src="https://1.bp.blogspot.com/-kCijQkEkmA8/X9ctU83lcJI/AAAAAAAAF5U/GayBI9yQ-PsUuGI9L4Mf8dJwsByp6g8WQCLcBGAsYHQ/s1192/k8%2Barchitecture.PNG" width="500">
 
 ### Nodes Components
 Kubernetes nodes, also referred to as **worker nodes** or simply nodes, are the individual machines or virtual machines that make up a Kubernetes cluster. These nodes are responsible for executing the actual workloads and running the containers that make up your applications. Each node in a Kubernetes cluster plays a crucial role in the distributed system and contributes to the overall functioning of the cluster. Here are the key characteristics and components of Kubernetes nodes:
@@ -60,7 +60,7 @@ Kube-proxy is responsible for network proxying and load balancing within the Kub
 * Container Runtime: 
 The container runtime is responsible for managing the low-level operations of the containers, including image management, container creation, networking, and storage.
 
-![](https://res.cloudinary.com/escalante-rep/image/upload/v1589159144/i14yfj2jn5nm70bzekxu.jpg)
+<img src="https://res.cloudinary.com/escalante-rep/image/upload/v1589159144/i14yfj2jn5nm70bzekxu.jpg" width="500">
 
 Nodes form the backbone of a Kubernetes cluster, providing the computational resources and infrastructure needed to run applications. They collaborate with the master components, such as the API server and controller manager, to ensure the proper orchestration, scheduling, and management of containers within the cluster.
 
