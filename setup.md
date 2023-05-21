@@ -12,10 +12,10 @@ To participate in this workshop, you will need a [GCP](https://cloud.google.com)
 
 ### 2. GKE(Google Kubernetes Engine) or Minikube:
 For this Cloud Pre-exercise, you will need to create a Kubernetes cluster to run some tests. You have two options:
-* **GKE:** _Only if_ you opted to access the $300.00 USD in credit, you can create your cloud environment in GKE. Please do not forget to [clean up](https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/07-clean/index.html) (delete everything) when you are finished, since you can run out of credit and **be charged** respectively. 
+* **GKE:** _Only if_ you opted to access the $300.00 USD in credit, you can create your cloud environment in [GKE](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwj_k8-twIf_AhUOmYQIHYroCxAQFnoECAwQAQ&url=https%3A%2F%2Fcloud.google.com%2Fkubernetes-engine&usg=AOvVaw0qQOKliejkrhEK8IRWdf5r). Please do not forget to [clean up](https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/07-clean/index.html) (delete everything) when you are finished, since you can run out of credit and **be charged** respectively. 
 
 * **Minikube:** If you prefer to use minikube (which is fine), please click [here](https://minikube.sigs.k8s.io/docs/start/) to get started. 
-  * **Kubectl**: When running minikube locally, you will need to download the [kubectl](https://kubernetes.io/docs/tasks/tools/) command-line tool in order to interact with your cluster.
+  * **Kubectl**: When running minikube locally, you will need to [download the kubectl](https://kubernetes.io/docs/tasks/tools/) command-line tool in order to interact with your cluster.
 
 ### 3. Prep-work Episodes:
 Once you have decided on your preferred approach (GCP or minikube), please refer to the prep-work episodes of this lesson. These episodes will provide you with the necessary instructions and guidance to set up your cloud environment. Follow the step-by-step process outlined in the prep-work episodes to ensure a smooth setup.
