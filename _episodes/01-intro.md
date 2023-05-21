@@ -32,15 +32,15 @@ Kubernetes is a powerful container orchestration platform that facilitates the d
 ### Kubernetes Components
 When deploying Kubernetes, you establish a cluster that comprises two main components: masters and workers.  
 
-* Master Nodes
+* Master Nodes: 
 Kubernetes masters are responsible for managing the control plane of the cluster. They coordinate and orchestrate the activities of the worker nodes and ensure the proper functioning of the entire cluster. 
 
-* Worker Nodes
+* Worker Nodes: 
 Worker nodes are the machines within the Kubernetes cluster that execute the actual application workloads. They host and run the Pods, which are the fundamental units of deployment in Kubernetes. Each Pod consists of one or more containers that work together to provide the desired functionality.
 
 By separating the responsibilities of the masters and workers, Kubernetes ensures a distributed and scalable architecture. The masters focus on managing the cluster's control plane and coordinating the overall state, while the workers handle the execution of application workloads. This division of labor allows for efficient scaling, fault tolerance, and high availability in a Kubernetes cluster.
 
-* Load Balancer
+* Load Balancer: 
 In a Kubernetes cluster, a load balancer is a component that ensures the even distribution of incoming network traffic across multiple instances of a service or application. It acts as a central entry point for external traffic and routes requests to the appropriate backend Pods or services. By incorporating a load balancer into the Kubernetes architecture, you can achieve better performance, fault tolerance, and overall stability for your applications.
 
 ![](https://1.bp.blogspot.com/-kCijQkEkmA8/X9ctU83lcJI/AAAAAAAAF5U/GayBI9yQ-PsUuGI9L4Mf8dJwsByp6g8WQCLcBGAsYHQ/s1192/k8%2Barchitecture.PNG)
@@ -48,16 +48,16 @@ In a Kubernetes cluster, a load balancer is a component that ensures the even di
 ### Nodes Components
 Kubernetes nodes, also referred to as **worker nodes** or simply nodes, are the individual machines or virtual machines that make up a Kubernetes cluster. These nodes are responsible for executing the actual workloads and running the containers that make up your applications. Each node in a Kubernetes cluster plays a crucial role in the distributed system and contributes to the overall functioning of the cluster. Here are the key characteristics and components of Kubernetes nodes:
 
-* Pods 
+* Pods: 
 In the Kubernetes world, pods are the smallest computing units. A pod represents a group of one or more containers that are deployed together on a node. Pods are fundamental to understanding Kubernetes architecture. However, when working with services, we typically work with a higher-level abstraction called deployments. Deployments automatically manage the creation and scaling of pods on our behalf.
 
-* Kubelet 
+* Kubelet: 
 The kubelet is the primary "node agent" that runs on each node in the Kubernetes cluster.  It interacts with the cluster's control plane to ensure that the containers described in the PodSpecs (pod specifications) are running and healthy.
 
-* Kube-Proxy 
+* Kube-Proxy: 
 Kube-proxy is responsible for network proxying and load balancing within the Kubernetes cluster.
 
-* Container Runtime
+* Container Runtime: 
 The container runtime is responsible for managing the low-level operations of the containers, including image management, container creation, networking, and storage.
 
 ![](https://res.cloudinary.com/escalante-rep/image/upload/v1589159144/i14yfj2jn5nm70bzekxu.jpg)
