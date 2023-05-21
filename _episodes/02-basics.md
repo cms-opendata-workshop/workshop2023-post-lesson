@@ -34,18 +34,14 @@ kubectl [command] [TYPE] [NAME] [flags]
 ```
 
 Where:
-```command:``` Specifies the operation you want to perform on one or more Kubernetes resources. Some commonly used commands include `create, get, describe, delete, apply, and scale`. Each command has its own set of options and subcommands.
-<br/>
-```TYPE:``` Indicates the type of Kubernetes resource you want to interact with. It can be a single resource type like `Pod, Deployment, Service`, or a more general term like `all, nodes, namespaces`, etc.
-<br/>
-```NAME:``` Specifies the name of the specific resource you want to operate on.
-<br/>
-```flags:``` These are optional flags that modify the behavior of the command. Flags can be used to specify additional parameters, control output formats, apply labels, set resource limits, etc. Flags are specific to each command and can be listed by running `kubectl [command] --help`.
-<br/>
+* ```command:``` Specifies the operation you want to perform on one or more Kubernetes resources. Some commonly used commands include `create, get, describe, delete, apply, and scale`. Each command has its own set of options and subcommands.
+* ```TYPE:``` Indicates the type of Kubernetes resource you want to interact with. It can be a single resource type like `Pod, Deployment, Service`, or a more general term like `all, nodes, namespaces`, etc.
+* ```NAME:``` Specifies the name of the specific resource you want to operate on.
+* ```flags:``` These are optional flags that modify the behavior of the command. Flags can be used to specify additional parameters, control output formats, apply labels, set resource limits, etc. Flags are specific to each command and can be listed by running `kubectl [command] --help`.
 <br/>
 
-* See the kubectl [installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
-* See the kubectl [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
+See the kubectl [installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
+See the kubectl [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
 ## K8s - Imperative vs Declarative programming
 In the context of Kubernetes, imperative and declarative are two different ways to define and manage the desired state of resources within a cluster.
@@ -87,22 +83,25 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 
 This YAML file describes a Pod with an nginx web server container that listens on port 80 and has an environment variable set. The specific behavior and functionality of the nginx web server will depend on the configuration of the nginx image used. 
 
-```yaml
-# myapp.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: myapp-pod
-spec:
-  containers:
-  - name: nginx-container
-    image: nginx
-    ports:
-    - containerPort: 80
-    env:
-    - name: DBCON
-      value: myconnectionstring
-```
+> ## YAML
+> ~~~
+> # myapp.yaml
+> apiVersion: v1
+> kind: Pod
+> metadata:
+>   name: myapp-pod
+> spec:
+>   containers:
+>   - name: nginx-container
+>     image: nginx
+>     ports:
+>     - containerPort: 80
+>     env:
+>     - name: DBCON
+>       value: myconnectionstring
+> ~~~
+> {: .language-yaml}
+{: .solution}
 
 Now, let's create a node using the YAML file
 ```bash
