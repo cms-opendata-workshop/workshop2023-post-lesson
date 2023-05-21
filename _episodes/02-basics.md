@@ -46,49 +46,95 @@ Where:
 * See [kubectl installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
 * See the [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
-## K8s - Declarative VS Imperative programming
+## K8s - Imperative vs Declarative programming
 In the context of Kubernetes, imperative and declarative are two different ways to define and manage the desired state of resources within a cluster.
-* Imperative Approach: 
+
+### Imperative Approach
 In the imperative approach, you specify the exact sequence of commands or actions to be performed to create or modify Kubernetes resources. You interact with the Kubernetes API by issuing explicit instructions.
 
-For example, using the kubectl command-line tool, you might create a deployment imperatively with the following command:
+Let’s first create a node running Nginx by using the imperative way.
 
+##### Create the pod using the Imperative way
 ```bash
-kubectl create deployment my-app --image=my-image:v1 --replicas=3
+kubectl run mynginx --image=nginx
 ```
 
-* Declarative Approach: 
+##### Get a list of running pods
+```bash
+kubectl get pods
+```
+
+##### Get more info
+```bash
+kubectl get pods -o wide
+kubectl describe pod mynginx
+```
+
+##### Delete the pod
+```bash
+kubectl delete pod mynginx
+```
+
+### Declarative Approach
 In the declarative approach, you define the desired state of Kubernetes resources in a declarative configuration file (e.g., **YAML** or JSON). Rather than specifying the steps to achieve that state, you describe the desired outcome and let Kubernetes handle the internal details.
 
-For example, a declarative definition of a deployment might look like this:
-```yaml
-# File name: deployment.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-app
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: my-app
-  template:
-    metadata:
-      labels:
-        app: my-app
-    spec:
-      containers:
-      - name: my-app
-        image: my-image:v1
+##### Create a pod using the declarative way
+Download the file:
+```bash
+wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/myapp.yaml
 ```
 
-You apply this configuration using the kubectl apply command:
+This YAML file describes a Pod with an nginx web server container that listens on port 80 and has an environment variable set. The specific behavior and functionality of the nginx web server will depend on the configuration of the nginx image used. 
+
+```yaml
+# myapp.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    ports:
+    - containerPort: 80
+    env:
+    - name: DBCON
+      value: myconnectionstring
+```
+
+Now, let's create a node using the YAML file
 ```bash
-kubectl apply -f deployment.yaml
+kubectl create -f myapp.yaml
+```
+
+Get some info
+```bash
+kubectl get pods -o wide
+kubectl describe pod myapp-pod
+```
+
+Attach our terminal
+```bash
+kubectl exec -it myapp-pod -- bash
+```
+
+Print the DBCON environment variable that was set in the YAML file.
+```bash
+echo $DBCON
+```
+
+Detach from the instance
+```bash
+exit
+```
+
+Cleanup
+```bash
+kubectl delete -f myapp.yaml
 ```
 
 The declarative approach is the recommended way to manage resources in Kubernetes. It promotes consistency, reproducibility, and automation. You can easily version control the configuration files, track changes over time, and collaborate with team members more effectively.
-
 
 ## Let's run a few examples.
 
