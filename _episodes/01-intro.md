@@ -17,9 +17,6 @@ keypoints:
 ---
 
 ## Introduction:
-Kubernetes, initially developed by Google and now maintained by the Cloud Native Computing Foundation, is a powerful container orchestration system. Its primary objective is to efficiently schedule services to run on a cluster of computers while abstracting away the complexities of managing the underlying infrastructure. Kubernetes offers features such as replication management, resource allocation, and fault tolerance, enabling applications to scale and recover quickly.
-
-### Expanding on Docker Containers:
 Throughout this workshop, you have become familiar with Docker containers and their ability to function as isolated, efficient virtual machines running on a host machine. Considering this, imagine the potential of maximizing hardware resources by running multiple CMSSW (Compact Muon Solenoid Software) open data containers on a single desktop. For example, running 10 CMSSW containers, each processing a single root file, skimming through entire datasets, in parallel, simultaneously, and on your own machine. Scaling up to a larger number of machines introduces new challenges. How would you manage the software installation across all these machines? Do you have sufficient resources to handle these tasks? How would you effectively manage and monitor all the containers running across the distributed infrastructure?
 
 These questions highlight the need for a robust orchestration system like **Kubernetes**. By leveraging Kubernetes, you can streamline and automate the deployment, scaling, and management of containers across multiple machines. Kubernetes provides a unified platform to address these challenges and ensures efficient utilization of computing resources, enabling researchers to focus on their analysis tasks rather than infrastructure management.
@@ -28,6 +25,8 @@ In the upcoming sections of this workshop, we will delve into the practical aspe
 
 ## Kubernetes (K8s) - Microservices Concepts
 Kubernetes is a powerful container orchestration platform that facilitates the deployment, scaling, and management of microservices-based applications. Microservices architecture is an approach to developing software applications as a collection of small, independent services that work together to form a larger application. Kubernetes provides essential features and functionality to support the deployment and management of microservices.
+
+<img src="https://imgopt.infoq.com/fit-in/1200x2400/filters:quality(80)/filters:no_upscale()/articles/distributed-systems-kubernetes/en/resources/13image006-1616431699209.jpg" width="500">
 
 ### Kubernetes Components
 When deploying Kubernetes, you establish a cluster that comprises two main components: masters and workers.  
