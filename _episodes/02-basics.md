@@ -23,7 +23,8 @@ The Kubernetes API (Application Programming Interface) is a set of rules and pro
 
 The Kubernetes API provides a declarative model, where users can define the desired state of the cluster and the API server handles the necessary actions to achieve that state. Users can interact with the API using various methods, such as command-line tools (e.g., kubectl), programming languages (e.g., Python, Go), or through user interfaces built on top of the API.
 
-![alt text](https://collabnix.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-22-at-10.52.54-AM.png | width=400)
+<img src="https://collabnix.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-22-at-10.52.54-AM.png" width="400">
+
 
 ### Kubectl
 
