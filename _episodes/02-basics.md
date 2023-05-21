@@ -34,17 +34,18 @@ kubectl [command] [TYPE] [NAME] [flags]
 ```
 
 Where:
-```command:``` Specifies the operation that you want to perform on one or more resources, for example create, get, describe, delete.
+```command:``` Specifies the operation you want to perform on one or more Kubernetes resources. Some commonly used commands include `create, get, describe, delete, apply, and scale`. Each command has its own set of options and subcommands.
 <br/>
-```TYPE:``` Specifies the resource type.
+```TYPE:``` Indicates the type of Kubernetes resource you want to interact with. It can be a single resource type like `Pod, Deployment, Service`, or a more general term like `all, nodes, namespaces`, etc.
 <br/>
-```NAME:``` Specifies the name of the resource. 
+```NAME:``` Specifies the name of the specific resource you want to operate on.
 <br/>
-```flags:```Specifies optional flags. 
+```flags:``` These are optional flags that modify the behavior of the command. Flags can be used to specify additional parameters, control output formats, apply labels, set resource limits, etc. Flags are specific to each command and can be listed by running `kubectl [command] --help`.
 <br/>
 <br/>
-* See [kubectl installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
-* See the [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
+
+* See the kubectl [installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
+* See the kubectl [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
 ## K8s - Imperative vs Declarative programming
 In the context of Kubernetes, imperative and declarative are two different ways to define and manage the desired state of resources within a cluster.
