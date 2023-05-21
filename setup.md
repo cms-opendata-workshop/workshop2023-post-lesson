@@ -15,7 +15,7 @@ For this Cloud Pre-exercise, you will need to create a Kubernetes cluster to run
 * **GKE:** _Only if_ you opted to access the $300.00 USD in credit, you can create your cloud environment in GKE. Please do not forget to [clean up](https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/07-clean/index.html) (delete everything) when you are finished, since you can run out of credit and **be charged** respectively. 
 
 * **Minikube:** If you prefer to use minikube (which is fine), please click [here](https://minikube.sigs.k8s.io/docs/start/) to get started. 
-* * **Kubectl**: If you opted to use minikube, please download the [kubectl](https://kubernetes.io/docs/tasks/tools/) command-line tool.
+  * **Kubectl**: If you opted to use minikube, please download the [kubectl](https://kubernetes.io/docs/tasks/tools/) command-line tool.
 
 ### 3. Prep-work Episodes:
 Once you have decided on your preferred approach (GCP or minikube), please refer to the prep-work episodes of this lesson. These episodes will provide you with the necessary instructions and guidance to set up your cloud environment. Follow the step-by-step process outlined in the prep-work episodes to ensure a smooth setup.
