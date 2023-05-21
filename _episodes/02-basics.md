@@ -25,7 +25,7 @@ The Kubernetes API provides a declarative model, where users can define the desi
 
 ![](https://collabnix.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-22-at-10.52.54-AM.png)
 
-### The `kubectl` command
+### Kubectl
 
 The kubectl command-line tool is a powerful utility provided by Kubernetes that allows you to interact with and manage Kubernetes clusters. Use the following syntax to run kubectl commands from your terminal window:
 
@@ -34,17 +34,18 @@ kubectl [command] [TYPE] [NAME] [flags]
 ```
 
 Where:
-* ```command:``` Specifies the operation you want to perform on one or more Kubernetes resources. Some commonly used commands include `create, get, describe, delete, apply, and scale`. Each command has its own set of options and subcommands.
-* ```TYPE:``` Indicates the type of Kubernetes resource you want to interact with. It can be a single resource type like `Pod, Deployment, Service`, or a more general term like `all, nodes, namespaces`, etc.
-* ```NAME:``` Specifies the name of the specific resource you want to operate on.
-* ```flags:``` These are optional flags that modify the behavior of the command. Flags can be used to specify additional parameters, control output formats, apply labels, set resource limits, etc. Flags are specific to each command and can be listed by running `kubectl [command] --help`.
-<br/>
+* **command:** Specifies the operation you want to perform on one or more Kubernetes resources. Some commonly used commands include `create, get, describe, delete, apply, and scale`. Each command has its own set of options and subcommands.
+* **TYPE:** Indicates the type of Kubernetes resource you want to interact with. It can be a single resource type like `Pod, Deployment, Service`, or a more general term like `all, nodes, namespaces`, etc.
+* **NAME:** Specifies the name of the specific resource you want to operate on.
+* **flags:** These are optional flags that modify the behavior of the command. Flags can be used to specify additional parameters, control output formats, apply labels, set resource limits, etc. Flags are specific to each command and can be listed by running `kubectl [command] --help`.
 
-See the kubectl [installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
-See the kubectl [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
+> See the kubectl [installation instructions](https://kubernetes.io/docs/tasks/tools/#kubectl).
+> <br/>
+> See the kubectl [cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
+{: .testimonial}
 
 ## K8s - Imperative vs Declarative programming
-In the context of Kubernetes, imperative and declarative are two different ways to define and manage the desired state of resources within a cluster.
+In the context of Kubernetes, imperative and declarative are two different ways to define and manage the desired state of resources within a cluster. While imperative commands are useful for ad-hoc tasks or interactive exploration, the declarative approach is more suitable for managing and maintaining resources in a Kubernetes cluster efficiently. Let's explore each approach!
 
 ### Imperative Approach
 In the imperative approach, you specify the exact sequence of commands or actions to be performed to create or modify Kubernetes resources. You interact with the Kubernetes API by issuing explicit instructions.
@@ -81,9 +82,9 @@ Download the file:
 wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/myapp.yaml
 ```
 
-This YAML file describes a Pod with an nginx web server container that listens on port 80 and has an environment variable set. The specific behavior and functionality of the nginx web server will depend on the configuration of the nginx image used. 
-
-> ## YAML
+> ## YAML File
+> This YAML file describes a Pod with an nginx web server container that listens on port 80 and has an environment variable set. 
+> The specific behavior and functionality of the nginx web server will depend on the configuration of the nginx image used. 
 > ~~~
 > # myapp.yaml
 > apiVersion: v1
