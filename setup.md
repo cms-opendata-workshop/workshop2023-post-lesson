@@ -2,11 +2,20 @@
 title: Setup
 ---
 ### Welcome!
-For this pre-exercise we will be using [Google Cloud Platform](https://cloud.google.com), here you will learn how to create a working cloud environment to run realistic physics analysis.
+The workshop will introduce participants to Kubernetes, an open-source container orchestration platform. Kubernetes provides a scalable and efficient infrastructure for running applications in the cloud. It allows users to manage and automate the deployment, scaling, and monitoring of containerized applications. In the context of the CMS OpenData workshop, Kubernetes will be used to create an environment on [Google Cloud Platform](https://cloud.google.com), enabling participants to run realistic physics analyses in the cloud.
+
 ### Setup
-A [GCP](https://cloud.google.com) account will be required for this [workshop](https://cms-opendata-workshop.github.io/2022-08-01-cms-open-data-workshop/) (Cloud Computing). When creating a GCP account, you can access $300.00 USD in credit that can be used within a lapse of 3 months (a credit/debit card is required for this). Keep in mind that we will temporarily provide you with the resources for the Cloud Computing Lesson so this is NOT completely necessary, since you can always use minikube to run tests. Click [here](https://minikube.sigs.k8s.io/docs/start/) to get started with minikube.
+#### 1. GCP Account:
+In this pre-exercise, we will guide you through setting up a working cloud environment for running realistic physics analysis using Google Cloud Platform (GCP). Here are the steps to get started:
 
-Once you've decided what suits you best, please check the [prep-work](https://cms-opendata-workshop.github.io/workshop2022-lesson-introcloud/01-intro/index.html) episodes of this lesson to get started. Alternatively you can watch an official [demo walkthrough](https://youtu.be/RPO6zR12iUc) to get familiar with the cloud environment to be used in the actual [workshop](https://cms-opendata-workshop.github.io/2022-08-01-cms-open-data-workshop/). Don't forget to subscribe to the [Mattermost cloud pre-exercises channel](https://mattermost.web.cern.ch/cmsodws2022/channels/cloud-pre-exercise). Good luck!
+To participate in this workshop, you will need a [GCP](https://cloud.google.com) account. Creating a GCP account allows you to access $300.00 USD in credit, which can be used within a period of 3 months. Please note that a credit or debit card is required during the account creation process. However, it's important to mention that for the Cloud Computing lesson, we will provide temporary resources, so having your own GCP account is not entirely necessary. Alternatively, you can use minikube for running tests. If you prefer to use minikube, click [here](https://minikube.sigs.k8s.io/docs/start/) to get started.
 
+#### 2. Prep-work Episodes:
+Once you have decided on your preferred approach (GCP or minikube), please refer to the prep-work episodes of this lesson. These episodes will provide you with the necessary instructions and guidance to set up your cloud environment. Follow the step-by-step process outlined in the prep-work episodes to ensure a smooth setup.
+
+#### 3. Mattermost Cloud Pre-Exercises Channel:
+Don't forget to subscribe to the [Mattermost cloud pre-exercises channel](https://mattermost.web.cern.ch/cmsodws2023/channels/cloud-pre-exercise). This channel will provide you with important updates, announcements, and any additional resources or support you may need throughout the workshop. It's a valuable communication platform to stay connected with instructors and fellow participants.
+
+We wish you good luck with the workshop! Feel free to reach out if you have any questions or need assistance along the way. Enjoy the learning experience!
 
 {% include links.md %}
