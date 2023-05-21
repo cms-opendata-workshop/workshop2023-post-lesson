@@ -25,7 +25,6 @@ The Kubernetes API provides a declarative model, where users can define the desi
 
 <img src="https://collabnix.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-22-at-10.52.54-AM.png" width="400">
 
-
 ### Kubectl
 
 The kubectl command-line tool is a powerful utility provided by Kubernetes that allows you to interact with and manage Kubernetes clusters. Use the following syntax to run kubectl commands from your terminal window:
@@ -46,7 +45,9 @@ Where:
 {: .testimonial}
 
 ## K8s - Imperative vs Declarative programming
-In the context of Kubernetes, imperative and declarative are two different ways to define and manage the desired state of resources within a cluster. While imperative commands are useful for ad-hoc tasks or interactive exploration, the declarative approach is more suitable for managing and maintaining resources in a Kubernetes cluster efficiently. Let's explore each approach!
+In the context of Kubernetes, imperative and declarative are two different paradigms used to define and manage the desired state of resources within a cluster. While imperative commands are useful for ad-hoc tasks or interactive exploration, the declarative approach is more suitable for managing and maintaining resources in a Kubernetes cluster efficiently. Let's explore each approach!
+
+<img src="https://ucarecdn.com/024d46aa-b898-4713-b3a7-2c095c94b00e/" width="400">
 
 ### Imperative Approach
 In the imperative approach, you specify the exact sequence of commands or actions to be performed to create or modify Kubernetes resources. You interact with the Kubernetes API by issuing explicit instructions.
