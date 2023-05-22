@@ -156,7 +156,7 @@ Let's get started!
 
         <p>Check the services running and the associated IP addresses:</p>    
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo
-        kubectl -n argo port-forward deployment/argo-server 2746:2746</code></pre></div></div>
+kubectl -n argo port-forward deployment/argo-server 2746:2746</code></pre></div></div>
         
         <p>Once it has started fowarding the port we will have to manually enable the port, to do this open a new cloud shell tab and run the following command:</p>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lynx https://localhost:2746</code></pre></div></div>  
