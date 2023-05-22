@@ -44,10 +44,8 @@ While jobs can be run manually, utilizing a workflow engine like Argo simplifies
 
     <div class="tab-content">
       <article role="tabpanel" class="tab-pane active" id="shell-gke">
-        
-<p>Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p>
-        
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create ns argo
+        <p>Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p> 
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create ns argo
 kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
 
 # Download the binary
@@ -63,59 +61,16 @@ chmod +x argo-linux-amd64
 sudo mv ./argo-linux-amd64 /usr/local/bin/argo
 </code></pre></div></div>   
         
-<p>This will also install the argo binary, which makes managing the workflow easier.</p>
+        <p>This will also install the argo binary, which makes managing the workflow easier.</p>
         
-<blockquote class="testimonial">
-  <p>In case you leave your computer, you might have to reconnect to the CloudShell again, and also on a different computer. If the <code class="language-plaintext highlighter-rouge">argo</code> command is not found, run the command above again starting from the <code class="language-plaintext highlighter-rouge">curl</code> command.</p>
-</blockquote>
-        
-<p>You can now check that argo is available with:</p>
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo version
-</code></pre></div></div>
-        
-<h3>Run a simple test workflow</h3>
-             
-<p>To test the setup, run a simple test workflow with</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo submit -n argo --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
-</code></pre></div></div>
-              
-<p>Wait till the yellow light turns green.
-Get the logs with</p>              
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo logs -n argo @latest
-</code></pre></div></div>              
-              
-<p>If argo was installed correctly you will have the following:</p>      
-              
-<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello-world-ml5bf: time="2022-07-25T12:33:54.295Z" level=info msg="capturing logs" argo=true
-hello-world-ml5bf:  _____________
-hello-world-ml5bf: < hello world >
-hello-world-ml5bf:  -------------
-hello-world-ml5bf:     \
-hello-world-ml5bf:      \
-hello-world-ml5bf:       \
-hello-world-ml5bf:                     ##        .
-hello-world-ml5bf:               ## ## ##       ==
-hello-world-ml5bf:            ## ## ## ##      ===
-hello-world-ml5bf:        /""""""""""""""""___/ ===
-hello-world-ml5bf:   ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
-hello-world-ml5bf:        \______ o          __/
-hello-world-ml5bf:         \    \        __/
-hello-world-ml5bf:           \____\______/
-</code></pre></div></div>
-              
-<p>Please mind that it is important to delete your workflows once they have completed. If you do not do this, the pods associated with the workflow will remain scheduled in the cluster, which might lead to additional charges. You will learn how to automatically remove them later.</p>  
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo delete -n argo @latest
-</code></pre></div></div>    
-  
-            </article><!-- gke  -->
-            <article role="tabpanel" class="tab-pane" id="shell-minikube">
-              
-<p>Install it into your working environment with the following commands (all commands to be entered into your local shell):</p>    
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create ns argo
+        <blockquote class="testimonial">
+          <p>In case you leave your computer, you might have to reconnect to the CloudShell again, and also on a different computer. If the <code class="language-plaintext highlighter-rouge">argo</code> command is not found, run the command above again starting from the <code class="language-plaintext highlighter-rouge">curl</code> command.</p>
+        </blockquote>
+      </article><!-- gke -->
+      
+      <article role="tabpanel" class="tab-pane" id="shell-minikube">
+        <p>Install it into your working environment with the following commands (all commands to be entered into your local shell):</p>    
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create ns argo
 kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
 
 # Download the binary
@@ -128,39 +83,38 @@ gunzip argo-linux-amd64.gz
 chmod +x argo-linux-amd64
 
 # Move binary to path
-sudo mv ./argo-darwin-amd64 /usr/local/bin/argo</code></pre></div></div>
+sudo mv ./argo-darwin-amd64 /usr/local/bin/argo</code></pre></div></div> 
+        <p>This will also install the argo binary, which makes managing the workflows easier.</p>   
+      </article><!-- Minikube  -->
+    </div> <!-- tab-contents  -->
+  </div><!-- nav-tabs  -->
+</div><!-- kubernetes-run  -->
+      
+You can now check that argo is available with:
               
-<p>This will also install the argo binary, which makes managing the workflows
-easier.</p>
-              
-<blockquote class="testimonial">
-  <p>Unless argo is already installed once on the local computer, when coming back to your computer, the <code class="language-plaintext highlighter-rouge">argo</code> command is not found, to solvent this run the command above again starting from the <code class="language-plaintext highlighter-rouge">curl</code> command.</p>
-</blockquote>
-
-<p>This will also install the argo binary, which makes managing the workflows
-easier.</p>
-
-<p>You can now check that argo is available with:</p>
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo version
-</code></pre></div></div>
-              
-<h3>Run a simple test workflow</h3>
+```bash
+argo version
+```    
+         
+         
+### Run a simple test workflow
              
-<p>To test the setup, run a simple test workflow with</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo submit -n argo --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
-</code></pre></div></div>
+To test the setup, run a simple test workflow with:
+```bash
+argo submit -n argo --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
+```
               
-<p>Wait till the yellow light turns green.
-Get the logs with</p>              
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo logs -n argo @latest
-</code></pre></div></div>              
+Wait till the yellow light turns green. 
+<br/>
+Get the logs with:
+```bash
+argo logs -n argo @latest
+```
               
-<p>If argo was installed correctly you will have the following:</p>
+If argo was installed correctly you will have the following:
               
-<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello-world-ml5bf: time="2022-07-25T12:33:54.295Z" level=info msg="capturing logs" argo=true
+```output
+hello-world-ml5bf: time="2022-07-25T12:33:54.295Z" level=info msg="capturing logs" argo=true
 hello-world-ml5bf:  _____________
 hello-world-ml5bf: < hello world >
 hello-world-ml5bf:  -------------
@@ -175,19 +129,14 @@ hello-world-ml5bf:   ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
 hello-world-ml5bf:        \______ o          __/
 hello-world-ml5bf:         \    \        __/
 hello-world-ml5bf:           \____\______/
-</code></pre></div></div>
+```
               
-<p>Please mind that it is important to delete your workflows once they have completed. If you do not do this, the pods associated with the workflow will remain scheduled in the cluster, which might lead to additional charges. You will learn how to automatically remove them later.</p>  
+Please mind that it is important to delete your workflows once they have completed. If you do not do this, the pods associated with the workflow will remain scheduled in the cluster, which might lead to additional charges. You will learn how to automatically remove them later.
               
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo delete -n argo @latest
-</code></pre></div></div>        
-            
-      </article><!-- Minikube  -->
-    </div> <!-- tab-contents  -->
-  </div><!-- nav-tabs  -->
-</div><!-- kubernetes-run  -->
-      
-      
+```bash
+argo delete -n argo @latest
+```
+
 ## Argo GUI
 
 Check the services running and the associated IP addresses:
@@ -237,7 +186,10 @@ kubectl get svc -n argo
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo
 kubectl -n argo port-forward deployment/argo-server 2746:2746
 </code></pre></div></div>
-            </article><!-- gke  -->
+        
+        <img src="../fig/ArgoInterface.png" width="400">
+        
+            </article><!-- gke -->
             <article role="tabpanel" class="tab-pane" id="shell-minikube1">
               
 <p>Check the services running and the associated IP addresses:</p>    
