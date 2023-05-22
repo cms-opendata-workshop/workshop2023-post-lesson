@@ -186,3 +186,19 @@ hello-world-ml5bf:           \____\______/
     </div> <!-- tab-contents  -->
   </div><!-- nav-tabs  -->
 </div><!-- kubernetes-run  -->
+      
+> ## Kubernetes namespaces
+>
+> The above commands as well as most of the following use a flag `-n argo`,
+> which defines the namespace in which the resources are queried or created.
+> [Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+> separate resources in the cluster, effectively giving you multiple virtual
+> clusters within a cluster.
+>
+> You can change the default namespace to `argo` as follows:
+>
+> ```bash
+> kubectl config set-context --current --namespace=argo
+> ```
+>
+{: .testimonial}
