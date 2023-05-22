@@ -12,96 +12,68 @@ objectives:
 - "Learn the basics of Argo commands"
 
 keypoints:
-- "`kubectl` is the ruler of GKE"
 - "Argo is a very useful tool for running workflows and parallel jobs"
-- "To be able to write, read and extract data, a few services/resources need to be set up on the GCP"
 ---
 
 ## Argo
 
-Argo is a collection of open source tools that let us to extend the functions in Kubernetes. We can find some benefits from use argo.
-- Cloud agnostic service
-- Argo can execute on absolutely in all clusters in kubernetes.
-- We can review the state of resources constantly.
-- There is a large capacity of executing jobs at the same time and from different nodes.
-- It’s possible correct debug errors.
-We are going to explain 3 of the tools most important for working with argo.
+Argo is a collection of open-source tools that extend the functionality of Kubernetes, providing several benefits for workflow management. Some key advantages of using Argo include:
 
-### Argo as a workflow engine
+* **Cloud Agnostic:** Argo can be deployed on any Kubernetes cluster, irrespective of the underlying cloud provider.
+* **Resource Monitoring:** Argo enables constant monitoring of resource states, allowing users to track the progress and status of their workflows.
+* **Scalability:** Argo supports the execution of multiple jobs simultaneously across different nodes, providing high scalability.
+* **Error Debugging:** With Argo, it is easier to identify and debug errors in workflows, ensuring smooth execution.
 
-- Is used to execute complex job orchestration, including serial and parallel execution where each stage is executed like a container.
-- It is the most popular workflow execution engine for kubernetes.
-- You can run thousands of workflows a day, each with thousands of concurrent tasks.
-- Designed from the ground up for containers without the overhead and limitations of legacy VM and server-based environments. 
+In the context of Argo, there are three important tools that facilitate working with workflows, we will be using the Argo Workflow Engine.
 
-While jobs can also be run manually, a workflow engine makes defining and
-submitting jobs easier. In this tutorial, we use
-[argo](https://argoproj.github.io/argo/quick-start/).
-Install it into your working environment with the following commands
-(all commands to be entered into the cloud shell):
+### Argo Workflow Engine
+The Argo Workflow Engine is designed to execute complex job orchestration, including both serial and parallel execution of stages, with each stage executed as a container.
 
-While jobs can also be run manually, a workflow engine makes defining and submitting jobs easier. In this tutorial, we use [argo quick start](https://argoproj.github.io/argo-workflows/quick-start/) page to install it.
+In the context of scientific analysis, such as physics analysis using datasets from the CMS Open Data portal and CMSSW, Argo's orchestration capabilities are particularly valuable. By leveraging Argo, researchers can automate and streamline complex analysis workflows, which often involve multiple processing stages and dependencies. Argo's support for parallel execution and container-based environments allows for efficient utilization of computational resources, enabling faster and more scalable data analysis.
 
 ## Install argo as a workflow engine
 
+While jobs can be run manually, utilizing a workflow engine like Argo simplifies the process of defining and submitting jobs. In this tutorial, we will use the Argo Quick Start page to install and configure Argo in your working environment.
+
 <div id="kubernetes-run">
-  <div>
+    <div>
         <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a data-os="GKE" href="#shell-gke" aria-controls="GKE" role="tab" data-toggle="tab">GKE</a></li>
-        <li role="presentation"><a data-os="minikube" href="#shell-minikube" aria-controls="Minikube" role="tab" data-toggle="tab">Minikube</a></li>
+            <li role="presentation" class="active"><a data-os="GKE" href="#shell-gke" aria-controls="GKE" role="tab" data-toggle="tab">GKE</a></li>
+            <li role="presentation"><a data-os="minikube" href="#shell-minikube" aria-controls="Minikube" role="tab" data-toggle="tab">Minikube</a></li>
         </ul>
-
         <div class="tab-content">
-
             <article role="tabpanel" class="tab-pane active" id="shell-gke">
-              
-
-<p>While jobs can also be run manually, a workflow engine makes defining and submitting jobs easier. In this tutorial, we use [argo](https://argoproj.github.io/argo/quick-start/). Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p>
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-kubectl create ns argo
-kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
-
-# Download the binary
-curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
-
-# Unzip
-gunzip argo-linux-amd64.gz
-
-# Make binary executable
-chmod +x argo-linux-amd64
-
-# Move binary to path
-sudo mv ./argo-linux-amd64 /usr/local/bin/argo
-</code></pre></div></div>
-
-<p>This will also install the argo binary, which makes managing the workflows
-easier.</p>
-
-                            
+                <p>Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p>    
+                <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                    kubectl create ns argo
+                    kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
+                    # Download the binary
+                    curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
+                    # Unzip
+                    gunzip argo-linux-amd64.gz
+                    # Make binary executable
+                    chmod +x argo-linux-amd64
+                    # Move binary to path
+                    sudo mv ./argo-linux-amd64 /usr/local/bin/argo
+                </code></pre></div></div>
+                <p>This will also install the argo binary, which makes managing the workflows
+                easier.</p>
             </article><!-- gke  -->
-
             <article role="tabpanel" class="tab-pane" id="shell-minikube">
-
-<p>While jobs can also be run manually, a workflow engine makes defining and submitting jobs easier. In this tutorial, we use [argo](https://argoproj.github.io/argo/quick-start/). Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p>
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-kubectl create ns argo
-kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
-
-# Download the binary
-curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
-
-# Unzip
-gunzip argo-linux-amd64.gz
-
-# Make binary executable
-chmod +x argo-linux-amd64
-
-              </article><!-- Minikube  -->
+                <p>Install it into your working environment with the following commands (all commands to be entered into your local shell):</p>    
+                <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                    kubectl create ns argo
+                    kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
+                    # Download the binary
+                    curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.7/argo-darwin-amd64.gz
+                    # Unzip
+                    gunzip argo-linux-amd64.gz
+                    # Make binary executable
+                    chmod +x argo-linux-amd64
+                    sudo mv ./argo-darwin-amd64 /usr/local/bin/argo
+                    argo version    
+                </code></pre></div></div>
+            </article><!-- Minikube  -->
         </div> <!-- tab-contents  -->
     </div><!-- nav-tabs  -->
 </div><!-- kubernetes-run  -->
-
-
-
