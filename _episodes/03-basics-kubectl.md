@@ -130,14 +130,14 @@ The declarative approach is the recommended way to manage resources in Kubernete
 
 ## Let's run a few examples.
 
-#### Get namespaces
+#### Get namespaces:
 Get the currently configured namespaces
 ```bash
 kubectl get namespaces
 kubectl get ns
 ```
 
-#### Get the pods list
+#### Get the pods list:
 Get a list of all the installed pods.
 ```bash
 kubectl get pods
@@ -148,7 +148,7 @@ kubectl get pods --namespace=kube-system
 kubectl get pods -n kube-system
 ```
 
-#### Get nodes information
+#### Get nodes information:
 Get a list of all the installed nodes. Using Docker Desktop, there should be only one.
 ```bash
 kubectl get nodes
@@ -206,7 +206,7 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 {: .solution}
 
 
-#### Create the Deployment
+#### Create the Deployment:
 A Deployment represents a desired state for a set of Pods and ensures that the desired number of replicas are running and available.
 ```bash
 kubectl apply -f deploy-example.yaml
@@ -228,7 +228,7 @@ kubectl get deploy
 kubectl describe deploy deploy-example
 ```
 
-Get the **ReplicaSet** name:
+#### Get the ReplicaSet name:
 A ReplicaSet is a lower-level resource that ensures a specified number of replicas of a Pod are running at all times.
 ```bash
 kubectl get rs
