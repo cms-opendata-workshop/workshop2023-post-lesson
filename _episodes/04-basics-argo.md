@@ -236,7 +236,9 @@ kubectl get svc -n argo
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo
 kubectl -n argo port-forward deployment/argo-server 2746:2746
 </code></pre></div></div>       
-  
+        
+<p>Test</p>      
+        
             </article><!-- gke  -->
             <article role="tabpanel" class="tab-pane" id="shell-minikube">
               
