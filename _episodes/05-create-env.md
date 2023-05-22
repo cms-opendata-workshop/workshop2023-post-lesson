@@ -1,5 +1,5 @@
 ---
-title: "Demo: Storing a workflow output on Kubernetes"
+title: "Storing a workflow output on Kubernetes"
 teaching: 5
 exercises: 30
 questions:
