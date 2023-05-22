@@ -43,18 +43,22 @@ While jobs can be run manually, utilizing a workflow engine like Argo simplifies
         </ul>
         <div class="tab-content">
             <article role="tabpanel" class="tab-pane active" id="shell-gke">
-                <p>Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p>    
-                <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-                    kubectl create ns argo
-                    kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
-                    # Download the binary
-                    curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
-                    # Unzip
-                    gunzip argo-linux-amd64.gz
-                    # Make binary executable
-                    chmod +x argo-linux-amd64
-                    # Move binary to path
-                    sudo mv ./argo-linux-amd64 /usr/local/bin/argo
+                
+              <p>Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p>    
+                
+              <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
+              
+kubectl create ns argo
+kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
+# Download the binary
+curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
+# Unzip
+gunzip argo-linux-amd64.gz
+# Make binary executable
+chmod +x argo-linux-amd64
+# Move binary to path
+sudo mv ./argo-linux-amd64 /usr/local/bin/argo
+                    
                 </code></pre></div></div>
                 <p>This will also install the argo binary, which makes managing the workflows
                 easier.</p>
