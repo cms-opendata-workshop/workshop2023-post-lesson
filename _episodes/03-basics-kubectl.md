@@ -130,61 +130,120 @@ The declarative approach is the recommended way to manage resources in Kubernete
 
 ## Let's run a few examples.
 
-* Get the status of the nodes in your cluster:
-
+#### Get namespaces
+Get the currently configured namespaces
 ```bash
-kubectl get nodes  
+kubectl get namespaces
+kubectl get ns
 ```
 
-* Get the cluster info:
-
+#### Get the pods list
+Get a list of all the installed pods.
 ```bash
-kubectl cluster-info  # Display addresses of the master and services
+kubectl get pods
+```
+You get the pods from the default namespace. Try getting the pods from the docker namespace. You will get a different list.
+```bash
+kubectl get pods --namespace=kube-system
+kubectl get pods -n kube-system
 ```
 
-Let's list some kubernetes components:
-
-* Check pods
-
+#### Get nodes information
+Get a list of all the installed nodes. Using Docker Desktop, there should be only one.
 ```bash
-kubectl get pod
+kubectl get nodes
 ```
 
-* Check the services
-
+Get some info about the node.
 ```bash
-kubectl get services
+kubectl describe node
 ```
 
-We don't have much going on.  Let's create some components.
+### Let's now use the Deployment template 
 
-* Inspect the `create` operation
-
+Download the file:
 ```bash
-kubectl create -h
+wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/deploy-example.yaml
 ```
 
-Note there is no `pod` on the list, so in K8s you don't create pods but *deployments*.  These will create pods, which will run under the hood.
+> ## YAML File
+> this Deployment will create and manage three replicas of an nginx container based on the nginx:alpine image. 
+> The Pods will have resource requests and limits defined, and the container will expose port 80. 
+> The Deployment ensures that the desired state of the replicas is maintained, managing scaling and updating as needed.
+> ~~~
+> # deploy-example.yaml
+> apiVersion: apps/v1
+> kind: Deployment
+> metadata:
+>   name: deploy-example
+> spec:
+>   replicas: 3
+>   revisionHistoryLimit: 3
+>   selector:
+>     matchLabels:
+>       app: nginx
+>       env: prod
+>   template:
+>     metadata:
+>       labels:
+>         app: nginx
+>         env: prod
+>     spec:
+>       containers:
+>       - name: nginx
+>         image: nginx:alpine
+>         resources:
+>           requests:
+>             cpu: 100m
+>             memory: 128Mi
+>           limits:
+>             cpu: 250m
+>             memory: 256Mi        
+>         ports:
+>         - containerPort: 80
+> ~~~
+> {: .language-yaml}
+{: .solution}
 
-* Let's create an application, it does not matter which.  Let's go for `nginx`:
 
+#### Create the Deployment
+A Deployment represents a desired state for a set of Pods and ensures that the desired number of replicas are running and available.
 ```bash
-kubectl create deployment mynginx-depl --image=nginx
+kubectl apply -f deploy-example.yaml
 ```
 
-The `nginx` image will be pulled down from the Docker Hub.
-This is the most minimalist way of creating a deployment.
-
-* Check the deployments
-
+Get the pods list
 ```bash
-kubectl get deployment
+kubectl get pods -o wide
+```    
+
+Describe the pod
+```bash
+kubectl describe pod deploy-example
 ```
 
-* Check pods
-
+Get the Deployment info
 ```bash
-kubectl get pod
+kubectl get deploy
+kubectl describe deploy deploy-example
+```
+
+Get the **ReplicaSet** name:
+A ReplicaSet is a lower-level resource that ensures a specified number of replicas of a Pod are running at all times.
+```bash
+kubectl get rs
+```
+
+Describe the ReplicaSet
+```bash
+kubectl describe rs
+```
+
+In summary, a Deployment provides a higher-level abstraction for managing and updating the desired state of Pods, while a ReplicaSet is a lower-level resource that ensures the specified number of Pod replicas are maintained. Deployments use ReplicaSets under the hood to achieve the desired state and handle scaling and rolling updates.
+
+#### Cleanup
+```bash
+kubectl delete -f deploy-example.yaml
 ```
 
 
