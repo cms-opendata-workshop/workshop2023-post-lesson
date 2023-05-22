@@ -24,12 +24,8 @@ keypoints:
         <li role="presentation" class="active"><a data-os="GKE" href="#shell-gke" aria-controls="GKE" role="tab" data-toggle="tab">GKE</a></li>
         <li role="presentation"><a data-os="minikube" href="#shell-minikube" aria-controls="Minikube" role="tab" data-toggle="tab">Minikube</a></li>
         </ul>
-
         <div class="tab-content">
-
-            <article role="tabpanel" class="tab-pane active" id="shell-gke">       
-
-<h3>Storage Volume</h3>  
+            <article role="tabpanel" class="tab-pane active" id="shell-gke"><h3>Storage Volume</h3>  
               
 <p>If we run some application or workflow, we usually require a disk space where to dump our results.  There is no persistent disk by default, we have to create it.</p>     
               
