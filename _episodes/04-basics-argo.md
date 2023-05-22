@@ -261,7 +261,8 @@ kubectl -n argo port-forward deployment/argo-server 2746:2746
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo
 </code></pre></div></div>     
               
-<p>Finally, you can access this address in your localhost. Do not forget to add “https://” and “:2746”. Click on Advanced, proceed to <ip>(unsafe) and voila</p></article><!-- Minikube  -->
+<p>Finally, you can access this address in your localhost. Do not forget to add “https://” and “:2746”. Click on Advanced, proceed to ip(unsafe) and voila.</p>
+      </article><!-- Minikube  -->
     </div> <!-- tab-contents  -->
   </div><!-- nav-tabs  -->
 </div><!-- kubernetes-run  -->
