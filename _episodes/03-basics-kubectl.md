@@ -161,7 +161,7 @@ kubectl describe node
 
 ### Run your first deployment
 A Deployment is a higher-level resource that provides declarative updates and manages the deployment of Pods. It allows you to define the desired state of your application, including the number of replicas, container images, and resource requirements.
-
+<br\>
 Download the file:
 ```bash
 wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/deploy-example.yaml
