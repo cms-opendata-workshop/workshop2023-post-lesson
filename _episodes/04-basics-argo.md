@@ -49,7 +49,7 @@ While jobs can be run manually, utilizing a workflow engine like Argo simplifies
 kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
 
 # Download the binary
-curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.7/argo-darwin-amd64.gz
 
 # Unzip
 gunzip argo-linux-amd64.gz
@@ -89,7 +89,7 @@ sudo mv ./argo-darwin-amd64 /usr/local/bin/argo</code></pre></div></div>
     </div> <!-- tab-contents  -->
   </div><!-- nav-tabs  -->
 </div><!-- kubernetes-run  -->
-      
+<br/>
 You can now check that argo is available with:
               
 ```bash
