@@ -223,12 +223,13 @@ kubectl get svc -n argo
 <div id="argo-run">
     <div>
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a data-os="GKE" href="#shell-gke" aria-controls="GKE" role="tab" data-toggle="tab">GKE</a></li>
-            <li role="presentation"><a data-os="minikube" href="#shell-minikube" aria-controls="Minikube" role="tab" data-toggle="tab">Minikube</a></li>
+            <li role="presentation" class="active"><a data-os="GKE1" href="#shell-gke1" aria-controls="GKE1" role="tab" data-toggle="tab">GKE</a></li>
+            <li role="presentation"><a data-os="minikube1" href="#shell-minikube1" aria-controls="Minikube1" role="tab" data-toggle="tab">Minikube</a></li>
         </ul>
 
     <div class="tab-content">
-      <article role="tabpanel" class="tab-pane active" id="shell-gke">
+      
+      <article role="tabpanel" class="tab-pane active" id="shell-gke1">
 
         
 <p>Check the services running and the associated IP addresses:</p>    
@@ -240,7 +241,7 @@ kubectl -n argo port-forward deployment/argo-server 2746:2746
 <p>Test</p>      
         
             </article><!-- gke  -->
-            <article role="tabpanel" class="tab-pane" id="shell-minikube">
+            <article role="tabpanel" class="tab-pane" id="shell-minikube1">
               
 <p>Check the services running and the associated IP addresses:</p>    
               
