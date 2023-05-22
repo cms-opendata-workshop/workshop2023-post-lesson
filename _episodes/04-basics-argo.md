@@ -218,8 +218,32 @@ kubectl get svc -n argo
   
 ![](../fig/ArgoInterface.png)
 
-{% include links.md %}
 
+      
+<div id="argo-run">
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a data-os="GKE" href="#shell-gke" aria-controls="GKE" role="tab" data-toggle="tab">GKE</a></li>
+            <li role="presentation"><a data-os="minikube" href="#shell-minikube" aria-controls="Minikube" role="tab" data-toggle="tab">Minikube</a></li>
+        </ul>
+
+    <div class="tab-content">
+      <article role="tabpanel" class="tab-pane active" id="shell-gke">
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo delete -n argo @latest
+</code></pre></div></div>    
+  
+            </article><!-- gke  -->
+            <article role="tabpanel" class="tab-pane" id="shell-minikube">
+              
+<p>Install it into your working environment with the following commands (all commands to be entered into your local shell):</p>    
+              
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo delete -n argo @latest
+</code></pre></div></div>        
+            
+      </article><!-- Minikube  -->
+    </div> <!-- tab-contents  -->
+  </div><!-- nav-tabs  -->
+</div><!-- kubernetes-run  -->
       
 > ## Kubernetes namespaces
 >
@@ -236,3 +260,6 @@ kubectl get svc -n argo
 > ```
 >
 {: .testimonial}
+      
+
+{% include links.md %}
