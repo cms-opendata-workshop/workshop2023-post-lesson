@@ -179,23 +179,18 @@ kubectl get svc -n argo
       
       <article role="tabpanel" class="tab-pane active" id="shell-gke1">
 
-<p>Check the services running and the associated IP addresses:</p>    
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo
-kubectl -n argo port-forward deployment/argo-server 2746:2746
-</code></pre></div></div>
+        <p>Check the services running and the associated IP addresses:</p>    
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo
+        kubectl -n argo port-forward deployment/argo-server 2746:2746</code></pre></div></div>
         
         <p>Once it has started fowarding the port we will have to manually enable the port, to do this open a new cloud shell tab and run the following command:</p>
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lynx https://localhost:2746
-        </code></pre></div></div>  
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lynx https://localhost:2746</code></pre></div></div>  
 
         <p>Access it and then quit. Return to the previous tab and you will see that the port is being accessed and handled, you can exit with ^C and finally patch the service with:</p>
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl patch svc argo-server -n argo -p '{"spec": {"type": "LoadBalancer"}}'
-        </code></pre></div></div>
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl patch svc argo-server -n argo -p '{"spec": {"type": "LoadBalancer"}}'</code></pre></div></div>
 
         <p>Since it is creating an external ip, wait a couple minutes. You can check if it is ready with:</p>
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo
-        </code></pre></div></div>     
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo</code></pre></div></div>     
 
         <p>Finally, you can access this address in your localhost. Do not forget to add “https://” and “:2746”. Click on Advanced, proceed to ip(unsafe) and voilà.</p>
         
@@ -206,8 +201,7 @@ kubectl -n argo port-forward deployment/argo-server 2746:2746
         <p>Check the services running and the associated IP addresses:</p>    
 
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc -n argo
-        kubectl -n argo port-forward deployment/argo-server 2746:2746
-        </code></pre></div></div>        
+kubectl -n argo port-forward deployment/argo-server 2746:2746</code></pre></div></div>        
       </article><!-- Minikube  -->
     </div> <!-- tab-contents  -->
   </div><!-- nav-tabs  -->
