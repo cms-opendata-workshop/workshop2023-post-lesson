@@ -139,35 +139,10 @@ argo delete -n argo @latest
 
 ## Argo GUI
 
-Check the services running and the associated IP addresses:
-```bash
-kubectl get svc -n argo
-kubectl -n argo port-forward deployment/argo-server 2746:2746
-```
-Once it has started fowarding the port we will have to manually enable the port, to do this open a new cloud shell tab and run the following command:
+Argo UI is a web-based user interface that provides a graphical representation and control panel for managing and monitoring workflows in Argo. It offers a visual interface for creating, submitting, tracking, and troubleshooting workflows. With Argo UI, users can easily interact with and manage their workflows without the need for manual command-line operations.
+<br/>
+Let's get started!
 
-```bash
-lynx https://localhost:2746
-```
-
-Access it and then quit. Return to the previous tab and you will see that the port is being accessed and handled, you can exit with ```^C``` and finally patch the service with:
-
-```bash
-kubectl patch svc argo-server -n argo -p '{"spec": {"type": "LoadBalancer"}}'
-```
-
-Since it is creating an external ip, wait a couple minutes. You can check if it is ready with:
-
-```bash
-kubectl get svc -n argo
-```
-
-* Finally, you can access this address in your localhost. Do not forget to add “https://” and “:2746”
-* Click on Advanced, proceed to <ip>(unsafe) and voilà
-  
-
-
-      
 <div id="argo-run">
     <div>
         <ul class="nav nav-tabs" role="tablist">
