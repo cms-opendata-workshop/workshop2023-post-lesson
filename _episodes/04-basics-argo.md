@@ -187,6 +187,40 @@ hello-world-ml5bf:           \____\______/
   </div><!-- nav-tabs  -->
 </div><!-- kubernetes-run  -->
       
+      
+## Argo GUI
+
+Check the services running and the associated IP addresses:
+```bash
+kubectl get svc -n argo
+kubectl -n argo port-forward deployment/argo-server 2746:2746
+```
+Once it has started fowarding the port we will have to manually enable the port, to do this open a new cloud shell tab and run the following command:
+
+```bash
+lynx https://localhost:2746
+```
+
+Access it and then quit. Return to the previous tab and you will see that the port is being accessed and handled, you can exit with ```^C``` and finally patch the service with:
+
+```bash
+kubectl patch svc argo-server -n argo -p '{"spec": {"type": "LoadBalancer"}}'
+```
+
+Since it is creating an external ip, wait a couple minutes. You can check if it is ready with:
+
+```bash
+kubectl get svc -n argo
+```
+
+* Finally, you can access this address in your localhost. Do not forget to add “https://” and “:2746”
+* Click on Advanced, proceed to <ip>(unsafe) and voilà
+  
+![](../fig/ArgoInterface.png)
+
+{% include links.md %}
+
+      
 > ## Kubernetes namespaces
 >
 > The above commands as well as most of the following use a flag `-n argo`,
