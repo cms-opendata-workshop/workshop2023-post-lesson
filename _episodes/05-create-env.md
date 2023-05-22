@@ -27,75 +27,7 @@ keypoints:
 
         <div class="tab-content">
 
-            <article role="tabpanel" class="tab-pane active" id="shell-gke">
-
-<p>While jobs can also be run manually, a workflow engine makes defining and submitting jobs easier. In this tutorial, we use [argo](https://argoproj.github.io/argo/quick-start/). Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p>
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-kubectl create ns argo
-kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
-
-# Download the binary
-curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
-
-# Unzip
-gunzip argo-linux-amd64.gz
-
-# Make binary executable
-chmod +x argo-linux-amd64
-
-# Move binary to path
-sudo mv ./argo-linux-amd64 /usr/local/bin/argo
-</code></pre></div></div>
-
-<p>This will also install the argo binary, which makes managing the workflows
-easier.</p>
-              
-<blockquote class="testimonial">
-  <p>In case you leave your computer, you might have to reconnect to the CloudShell again, and also on a different computer. If the <code class="language-plaintext highlighter-rouge">argo</code> command is not found, run the command above again starting from the <code class="language-plaintext highlighter-rouge">curl</code> command.</p>
-</blockquote>
-
-<p>You can now check that argo is available with:</p>
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo version
-</code></pre></div></div>
-              
-<h3>Run a simple test workflow</h3>
-             
-<p>To test the setup, run a simple test workflow with</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo submit -n argo --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
-</code></pre></div></div>
-              
-<p>Wait till the yellow light turns green.
-Get the logs with</p>              
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo logs -n argo @latest
-</code></pre></div></div>              
-              
-<p>If argo was installed correctly you will have the following:</p>      
-              
-<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello-world-ml5bf: time="2022-07-25T12:33:54.295Z" level=info msg="capturing logs" argo=true
-hello-world-ml5bf:  _____________
-hello-world-ml5bf: < hello world >
-hello-world-ml5bf:  -------------
-hello-world-ml5bf:     \
-hello-world-ml5bf:      \
-hello-world-ml5bf:       \
-hello-world-ml5bf:                     ##        .
-hello-world-ml5bf:               ## ## ##       ==
-hello-world-ml5bf:            ## ## ## ##      ===
-hello-world-ml5bf:        /""""""""""""""""___/ ===
-hello-world-ml5bf:   ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
-hello-world-ml5bf:        \______ o          __/
-hello-world-ml5bf:         \    \        __/
-hello-world-ml5bf:           \____\______/
-</code></pre></div></div>
-              
-<p>Please mind that it is important to delete your workflows once they have completed. If you do not do this, the pods associated with the workflow will remain scheduled in the cluster, which might lead to additional charges. You will learn how to automatically remove them later.</p>  
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo delete -n argo @latest
-</code></pre></div></div>                
+            <article role="tabpanel" class="tab-pane active" id="shell-gke">       
 
 <h3>Storage Volume</h3>  
               
@@ -233,78 +165,7 @@ kubectl cp  pv-pod:/mnt/data /tmp/poddata -n argo
               
             </article><!-- gke  -->
 
-            <article role="tabpanel" class="tab-pane" id="shell-minikube">
-
-<p>While jobs can also be run manually, a workflow engine makes defining and submitting jobs easier. In this tutorial, we use [argo](https://argoproj.github.io/argo/quick-start/). Install it into your working environment with the following commands (all commands to be entered into the cloud shell):</p>
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-kubectl create ns argo
-kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
-
-# Download the binary
-curl -sLO https://github.com/argoproj/argo/releases/download/v2.11.1/argo-linux-amd64.gz
-
-# Unzip
-gunzip argo-linux-amd64.gz
-
-# Make binary executable
-chmod +x argo-linux-amd64
-
-# Move binary to path
-sudo mv ./argo-linux-amd64 /usr/local/bin/argo
-</code></pre></div></div>
-
-<p>This will also install the argo binary, which makes managing the workflows
-easier.</p>
-              
-<blockquote class="testimonial">
-  <p>Unless argo is already installed once on the local computer, when coming back to your computer, the <code class="language-plaintext highlighter-rouge">argo</code> command is not found, to solvent this run the command above again starting from the <code class="language-plaintext highlighter-rouge">curl</code> command.</p>
-</blockquote>
-
-<p>This will also install the argo binary, which makes managing the workflows
-easier.</p>
-
-<p>You can now check that argo is available with:</p>
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo version
-</code></pre></div></div>
-              
-<h3>Run a simple test workflow</h3>
-             
-<p>To test the setup, run a simple test workflow with</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo submit -n argo --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
-</code></pre></div></div>
-              
-<p>Wait till the yellow light turns green.
-Get the logs with</p>              
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo logs -n argo @latest
-</code></pre></div></div>              
-              
-<p>If argo was installed correctly you will have the following:</p>
-              
-<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello-world-ml5bf: time="2022-07-25T12:33:54.295Z" level=info msg="capturing logs" argo=true
-hello-world-ml5bf:  _____________
-hello-world-ml5bf: < hello world >
-hello-world-ml5bf:  -------------
-hello-world-ml5bf:     \
-hello-world-ml5bf:      \
-hello-world-ml5bf:       \
-hello-world-ml5bf:                     ##        .
-hello-world-ml5bf:               ## ## ##       ==
-hello-world-ml5bf:            ## ## ## ##      ===
-hello-world-ml5bf:        /""""""""""""""""___/ ===
-hello-world-ml5bf:   ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
-hello-world-ml5bf:        \______ o          __/
-hello-world-ml5bf:         \    \        __/
-hello-world-ml5bf:           \____\______/
-</code></pre></div></div>
-              
-<p>Please mind that it is important to delete your workflows once they have completed. If you do not do this, the pods associated with the workflow will remain scheduled in the cluster, which might lead to additional charges. You will learn how to automatically remove them later.</p>  
-              
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argo delete -n argo @latest
-</code></pre></div></div>                
+            <article role="tabpanel" class="tab-pane" id="shell-minikube">            
 
 <h3>Storage Volume</h3>                
               
@@ -449,21 +310,3 @@ kubectl cp  task-pv-pod:/mnt/data /tmp/poddata -n argo
         </div> <!-- tab-contents  -->
     </div><!-- nav-tabs  -->
 </div><!-- kubernetes-run  -->
-
-
-
-> ## Kubernetes namespaces
->
-> The above commands as well as most of the following use a flag `-n argo`,
-> which defines the namespace in which the resources are queried or created.
-> [Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
-> separate resources in the cluster, effectively giving you multiple virtual
-> clusters within a cluster.
->
-> You can change the default namespace to `argo` as follows:
->
-> ```bash
-> kubectl config set-context --current --namespace=argo
-> ```
->
-{: .testimonial}
