@@ -159,7 +159,8 @@ Get some info about the node.
 kubectl describe node
 ```
 
-### Let's now use the Deployment template 
+### Run your first deployment
+A Deployment is a higher-level resource that provides declarative updates and manages the deployment of Pods. It allows you to define the desired state of your application, including the number of replicas, container images, and resource requirements.
 
 Download the file:
 ```bash
@@ -167,7 +168,7 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 ```
 
 > ## YAML File
-> this Deployment will create and manage three replicas of an nginx container based on the nginx:alpine image. 
+> This Deployment will create and manage three replicas of an nginx container based on the nginx:alpine image. 
 > The Pods will have resource requests and limits defined, and the container will expose port 80. 
 > The Deployment ensures that the desired state of the replicas is maintained, managing scaling and updating as needed.
 > ~~~
@@ -207,7 +208,6 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 
 
 #### Create the Deployment:
-A Deployment represents a desired state for a set of Pods and ensures that the desired number of replicas are running and available.
 ```bash
 kubectl apply -f deploy-example.yaml
 ```
