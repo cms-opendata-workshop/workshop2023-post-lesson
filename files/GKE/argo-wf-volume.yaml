@@ -7,7 +7,7 @@ spec:
   volumes:
     - name: task-pv-storage
       persistentVolumeClaim:
-        claimName: nfs-<NUMBER>
+        claimName: nfs-1
   templates:
   - name: test-hostpath
     script:
