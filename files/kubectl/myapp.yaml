@@ -1,0 +1,14 @@
+# myapp.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    ports:
+    - containerPort: 80
+    env:
+    - name: DBCON
+      value: myconnectionstring
