@@ -130,7 +130,7 @@ second command accordingly.
 kubectl get pods -n argo
 kubectl exec http-fileserver-XXXXXXXX-YYYYY -n argo -- rm /usr/share/nginx/html/index.html
 ```
-<b\>
+<br/>
 By deploying this HTTP file server configuration, you can serve and share files from the persistent volume, leveraging NGINX's capabilities for hosting and delivering content over HTTP.
   
 ## Security Considerations
@@ -142,7 +142,7 @@ When deploying a web server that exposes your storage volume to the outside worl
 * Follow security best practices and ensure that proper access controls are in place to prevent unauthorized access to your files.
   
 By deploying a web server that mounts the storage volume, you can easily access and share files stored in your Kubernetes cluster. This approach allows you to perform further processing on your local machine while maintaining flexibility and security in file management and collaboration.
-<b\>
+<br/>
 > ## Warning: anyone can now access these files
 >
 > This IP is now accessible from anywhere in the world, and therefore also
