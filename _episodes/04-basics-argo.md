@@ -6,6 +6,7 @@ questions:
 - "What is Argo?"
 - "How to use Argo commands?"
 - "What are Argo workflows?"
+- "How do I deploy my Argo GUI?"
 
 objectives:
 - "Appreciate the necessity for the Argo workflows tool (or similar)"
