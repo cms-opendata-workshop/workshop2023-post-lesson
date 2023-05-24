@@ -133,7 +133,7 @@ kubectl exec http-fileserver-XXXXXXXX-YYYYY -n argo -- rm /usr/share/nginx/html/
 <b\>
 By deploying this HTTP file server configuration, you can serve and share files from the persistent volume, leveraging NGINX's capabilities for hosting and delivering content over HTTP.
   
-### Security Considerations
+## Security Considerations
   
 When deploying a web server that exposes your storage volume to the outside world, consider the following security considerations:
 * Implement authentication and authorization mechanisms to control access to the files hosted by the web server.
