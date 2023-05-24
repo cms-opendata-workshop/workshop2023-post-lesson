@@ -26,9 +26,9 @@ The storage volume in your Kubernetes cluster provides a convenient way to store
 
 Deploying a web server that mounts the storage volume offers several advantages:
 
-* Remote Access: A web server allows you to access and download files from the storage volume remotely. You can retrieve your data from anywhere with an internet connection, enabling seamless collaboration and remote file management.
-* Simplified Sharing: By hosting your files on a web server, you can easily share them with others. You can provide access to specific files or directories, control permissions, and share download links with colleagues or clients.
-* Additional Processing: With a web server, you can perform further processing of the files directly on your local machine. This flexibility allows you to leverage local computing resources and tools for data analysis, visualization, or other tasks.
+* **Remote Access:** A web server allows you to access and download files from the storage volume remotely. You can retrieve your data from anywhere with an internet connection, enabling seamless collaboration and remote file management.
+* **Simplified Sharing:** By hosting your files on a web server, you can easily share them with others. You can provide access to specific files or directories, control permissions, and share download links with colleagues or clients.
+* **Additional Processing:** With a web server, you can perform further processing of the files directly on your local machine. This flexibility allows you to leverage local computing resources and tools for data analysis, visualization, or other tasks.
 
 ### Deploying a Web Server
 
