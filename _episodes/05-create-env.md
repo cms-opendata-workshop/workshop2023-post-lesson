@@ -27,6 +27,25 @@ keypoints:
         <div class="tab-content">
             <article role="tabpanel" class="tab-pane active" id="shell-gke"><h3>Storage Volume</h3>  
               
+              
+              <button onclick="toggleContent()">Toggle Content</button>
+<div id="content" style="display: none;">
+  <!-- Your content goes here -->
+  <p>This is the hidden content that will be toggled.</p>
+</div>
+
+<script>
+function toggleContent() {
+  var content = document.getElementById("content");
+  if (content.style.display === "none") {
+    content.style.display = "block";
+  } else {
+    content.style.display = "none";
+  }
+}
+</script>
+              
+              
 <p>If we run some application or workflow, we usually require a disk space where to dump our results.  There is no persistent disk by default, we have to create it.</p>     
               
 <p>You could create a disk clicking on the web interface above, but lets do it faster in the command line.</p>    
