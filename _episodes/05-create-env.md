@@ -339,8 +339,7 @@ kubectl cp task-pv-pod:/mnt/data /tmp/poddata -n argo
 <p>and you will get the file created by the job in <code class="language-plaintext highlighter-rouge">/tmp/poddata/test.txt</code>.</p>    
     
 <blockquote class="testimonial">
-          <p>Every time you want the files to get copied from your the pv-pod to your local computer you must run <code class="language-plaintext highlighter-rouge">kubectl cp task-pv-pod:/mnt/vol /tmp/poddata -n argo</code>.
-</blockquote>
+          <p>Every time you want the files to get copied from your the pv-pod to your local computer you must run <code class="language-plaintext highlighter-rouge">kubectl cp task-pv-pod:/mnt/vol /tmp/poddata -n argo</code>.</p></blockquote>
               
               </article><!-- Minikube  -->
         </div> <!-- tab-contents  -->
