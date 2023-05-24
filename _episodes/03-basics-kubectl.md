@@ -70,7 +70,7 @@ In the declarative approach, you define the desired state of Kubernetes resource
 ##### Create a pod using the declarative way
 Download the file:
 ```bash
-wget https://github.com/cms-opendata-workshop/workshop2023-lesson-introcloud/blob/gh-pages/files/kubectl/myapp.yaml
+wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/kubectl/myapp.yaml
 ```
 
 > ## YAML File
@@ -164,7 +164,7 @@ A Deployment is a higher-level resource that provides declarative updates and ma
 <br\>
 Download the file:
 ```bash
-wget https://github.com/cms-opendata-workshop/workshop2023-lesson-introcloud/blob/gh-pages/files/kubectl/deploy-example.yaml
+wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/kubectl/deploy-example.yaml
 ```
 
 > ## YAML File
