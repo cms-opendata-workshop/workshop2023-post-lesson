@@ -9,7 +9,7 @@ Physics analyses in the field of particle physics often involve processing large
 >
 > Welcome.  In this lesson you will:
 > - Learn what Kubernetes is.
-> - Understand the basic way on how Kubernetes and Argo operate.
+> - Understand the basic way on how Kubernetes (often abbreviated as K8s) and a workflow orchestration tool such as Argo operate.
 > - Learn how to create a K8s cluster prepared for physics analysis.
 > - Learn to configure and run a simple Argo workflow.
 {: .objectives}
@@ -17,7 +17,7 @@ Physics analyses in the field of particle physics often involve processing large
 > ## Prerequisites
 > In order to complete this lesson you need
 > - A basic understanding of [UNIX shells](https://swcarpentry.github.io/shell-novice/) (external link).
-> - A basic understanding of containers (after completing the [Docker](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/) lesson).
+> - A basic understanding of containers (after completing the [Docker](https://cms-opendata-workshop.github.io/workshop2023-lesson-docker/) lesson).
 {: .prereq}
 
 > ## Helpline
