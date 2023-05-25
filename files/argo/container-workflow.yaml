@@ -1,0 +1,13 @@
+# container-workflow.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow                 
+metadata:
+  generateName: container-   
+spec:
+  entrypoint: main         
+  templates:
+  - name: main             
+    container:
+      image: docker/whalesay
+      command: [cowsay]         
+      args: ["hello world"]
