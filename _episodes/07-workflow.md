@@ -27,6 +27,8 @@ Here's an example of a simple Argo Workflow definition, get it with:
 wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/argo/container-workflow.yaml
 ```
 
+The container template will have the following content:
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
@@ -75,6 +77,12 @@ Open the Argo Workflows UI. Then navigate to the workflow, you should see a sing
 ## DAG Template
 
 A **DAG template** is a common type of _orchestration_template. Let's look at a complete example:
+
+```
+wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/argo/dag-workflow.yaml
+```
+
+That has the content:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -162,86 +170,187 @@ Open the Argo Server tab and navigate to the workflow, you should see two contai
 > {: .solution}
 {: .challenge}
 
-## Input Parameters and Artifacts
+## Input Parameters
 
-Workflows often require input parameters and involve passing data between tasks. Argo Workflows supports defining input parameters and utilizing artifacts for data sharing.
+Let's have a look at an example:
 
-To define input parameters, specify them under the inputs section in the workflow specification. Similarly, artifacts can be defined and used as inputs or outputs of tasks.
-
-Here's an example of a workflow with input parameters and artifacts:
-
+```bash
+wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/argo/input-parameters-workflow.yaml
+```
+See the content:
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: my-workflow
+  generateName: input-parameters-
 spec:
-  entrypoint: my-task
+  entrypoint: main
   arguments:
     parameters:
       - name: message
-        value: "Hello, Argo!"
+        value: hello world
   templates:
-    - name: my-task
+    - name: main
       inputs:
         parameters:
           - name: message
       container:
-        image: my-image
-        command: [echo, "{{inputs.parameters.message}}"]
+        image: docker/whalesay
+        command: [ cowsay ]
+        args: [ "{{inputs.parameters.message}}" ]
 ```
 
-In this example, we define an input parameter message with a default value of "Hello, Argo!". The my-task task then uses this parameter value to echo the message.
+This template declares that it has one input parameter named "message". See how the workflow itself has arguments?
 
-## Control Flow and Conditionals
+Run it:
 
-Argo Workflows allows you to incorporate control structures like loops and conditionals into your workflows. This enables you to create dynamic and flexible workflows based on specific conditions or iterate over a set of tasks.
+`argo submit --watch input-parameters-workflow.yaml`
 
-To implement control flow and conditionals, utilize the appropriate workflow template structures and expressions within your workflow definition.
+You should see:
 
-Here's an example of a workflow with a conditional task:
+```
+STEP                       TEMPLATE  PODNAME                 DURATION  MESSAGE
+ ✔ input-parameters-mvtcw  main      input-parameters-mvtcw  8s          
+```
+
+If a workflow has parameters, you can change the parameters using `-p` using the CLI:
+
+`argo submit --watch input-parameters-workflow.yaml -p message='Welcome to Argo!'`
+
+You should see:
+
+```
+STEP                       TEMPLATE  PODNAME                 DURATION  MESSAGE
+ ✔ input-parameters-lwkdx  main      input-parameters-lwkdx  5s          
+```
+
+Let's check the output in the logs:
+
+`argo logs @latest`
+
+You should see:
+
+```python
+ ______________
+< Welcome to Argo! >
+ --------------
+    \
+     \
+      \     
+                    ##        .            
+              ## ## ##       ==            
+           ## ## ## ##      ===            
+       /""""""""""""""""___/ ===        
+  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~   
+       \______ o          __/            
+        \    \        __/             
+          \____\______/   
+```
+
+## Output Parameters
+
+Output parameters can be from a few places, but typically the most versatile is from a file. In this example, the container creates a file with a message in it:
+
+```yaml
+  - name: whalesay
+    container:
+      image: docker/whalesay
+      command: [sh, -c]
+      args: ["echo -n hello world > /tmp/hello_world.txt"]
+    outputs:
+      parameters:
+      - name: hello-param		
+        valueFrom:
+          path: /tmp/hello_world.txt
+```
+
+In a DAG template and steps template, you can reference the output from one task, as the input to another task using a **template tag**:
+
+```yaml
+      dag:
+        tasks:
+          - name: generate-parameter
+            template: whalesay
+          - name: consume-parameter
+            template: print-message
+            dependencies:
+              - generate-parameter
+            arguments:
+              parameters:
+                - name: message
+                  value: "{{tasks.generate-parameter.outputs.parameters.hello-param}}"
+```
+
+Get the complete workflow:
+
+```bash
+wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/argo/parameters-workflow.yaml
+```
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: my-workflow
+  generateName: parameters-
 spec:
-  entrypoint: my-task
+  entrypoint: main
   templates:
-    - name: my-task
+    - name: main
+      dag:
+        tasks:
+          - name: generate-parameter
+            template: whalesay
+          - name: consume-parameter
+            template: print-message
+            dependencies:
+              - generate-parameter
+            arguments:
+              parameters:
+                - name: message
+                  value: "{{tasks.generate-parameter.outputs.parameters.hello-param}}"
+
+    - name: whalesay
+      container:
+        image: docker/whalesay
+        command: [ sh, -c ]
+        args: [ "echo -n hello world > /tmp/hello_world.txt" ]
+      outputs:
+        parameters:
+          - name: hello-param
+            valueFrom:
+              path: /tmp/hello_world.txt
+
+    - name: print-message
       inputs:
         parameters:
-          - name: condition
-      steps:
-        - - name: conditional-step
-            template: conditional-template
-            when: "{{inputs.parameters.condition}}"
-    - name: conditional-template
+          - name: message
       container:
-        image: my-image
-        command: [echo, "Conditional task executed!"]
+        image: docker/whalesay
+        command: [ cowsay ]
+        args: [ "{{inputs.parameters.message}}" ]
 ```
 
-In this example, the workflow contains a task named my-task that includes a conditional step. The execution of the conditional-step is determined by the value of the input parameter condition.
+Run it:
 
-## Workflow Execution and Monitoring
-Once you have defined your Argo Workflow, you can submit and execute it using the kubectl command-line tool. Argo Workflows provides commands to submit, monitor, and manage workflows.
+`argo submit --watch parameters-workflow.yaml`
 
-To submit a workflow, use the following command:
+You should see:
 
-```bash
-kubectl apply -f my-workflow.yaml
+```php
+STEP                     TEMPLATE       PODNAME                      DURATION  MESSAGE
+ ✔ parameters-vjvwg      main                                                    
+ ├─✔ generate-parameter  whalesay       parameters-vjvwg-4019940555  43s         
+ └─✔ consume-parameter   print-message  parameters-vjvwg-1497618270  8s          
 ```
-To monitor the status and progress of a workflow, you can use the following command:
-```bash
-argo get my-workflow
-```
-This will display information about the workflow, including the current status and any logs generated by the tasks.
+
+Learn more about parameters in the Argo Workflows documentation:
+
+-   [Parameters overview](https://argoproj.github.io/argo-workflows/walk-through/parameters/)
+-   [Workflow input parameters](https://argoproj.github.io/argo-workflows/workflow-inputs/).
 
 ## Conclusion
 
-Congratulations! You have completed the Argo Workflows tutorial, where you learned how to define and execute workflows using Argo. You explored workflow definitions, input parameters, artifacts, control flow, and monitoring.
+Congratulations! You have completed the Argo Workflows tutorial, where you learned how to define and execute workflows using Argo. You explored workflow definitions, dag templates, input and output parameters, and monitoring.
 
 Argo Workflows offers a wide range of features and capabilities for managing complex workflows in Kubernetes. Continue to explore its documentation and experiment with more advanced workflow scenarios.
 
