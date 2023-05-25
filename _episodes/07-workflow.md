@@ -117,7 +117,9 @@ The DAG has two tasks: "a" and "b". Both run the "whalesay" template, but as "b"
 
 Let's run the workflow:
 
-`argo submit --watch dag-workflow.yaml`
+```bash
+argo submit --watch dag-workflow.yaml
+```
 
 You should see something like:
 
@@ -177,6 +179,7 @@ Let's have a look at an example:
 ```bash
 wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/argo/input-parameters-workflow.yaml
 ```
+
 See the content:
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -204,7 +207,9 @@ This template declares that it has one input parameter named "message". See how 
 
 Run it:
 
-`argo submit --watch input-parameters-workflow.yaml`
+```bash
+argo submit --watch input-parameters-workflow.yaml
+```
 
 You should see:
 
@@ -215,7 +220,9 @@ STEP                       TEMPLATE  PODNAME                 DURATION  MESSAGE
 
 If a workflow has parameters, you can change the parameters using `-p` using the CLI:
 
-`argo submit --watch input-parameters-workflow.yaml -p message='Welcome to Argo!'`
+```bash
+argo submit --watch input-parameters-workflow.yaml -p message='Welcome to Argo!'
+```
 
 You should see:
 
@@ -226,7 +233,9 @@ STEP                       TEMPLATE  PODNAME                 DURATION  MESSAGE
 
 Let's check the output in the logs:
 
-`argo logs @latest`
+```bash
+argo logs @latest
+```
 
 You should see:
 
@@ -332,7 +341,9 @@ spec:
 
 Run it:
 
-`argo submit --watch parameters-workflow.yaml`
+```bash
+argo submit --watch parameters-workflow.yaml
+```
 
 You should see:
 
