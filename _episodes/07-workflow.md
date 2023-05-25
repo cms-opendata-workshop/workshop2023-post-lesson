@@ -21,7 +21,11 @@ To define a workflow, create a YAML file (e.g., `my-workflow.yaml`) and define t
 - Metadata: Provide a name and optional labels for the workflow.
 - Spec: Define the workflow's specification, including the list of tasks to be executed.
 
-Here's an example of a simple Argo Workflow definition:
+Here's an example of a simple Argo Workflow definition, get it with:
+
+```bash
+wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/argo/container-workflow.yaml
+```
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -37,7 +41,37 @@ spec:
         command: [echo, "Hello, Argo!"]
 ```
         
-This example defines a workflow named my-workflow with a single task called my-task. The my-task task executes a container with the command echo "Hello, Argo!".
+Let's run the workflow:
+```
+argo submit --watch container-workflow.yaml
+```
+
+Open the Argo Workflows UI. Then navigate to the workflow, you should see a single container running.
+
+> ## Exercise
+>
+> Edit the workflow to make it echo "howdy world".
+>
+> > ## Solution
+> > ~~~
+> > apiVersion: argoproj.io/v1alpha1
+> > kind: Workflow                 
+> > metadata:
+> >   generateName: container-   
+> > spec:
+> >   entrypoint: main         
+> >   templates:
+> >   - name: main             
+> >     container:
+> >       image: docker/whalesay
+> >       command: [cowsay]         
+> >       args: ["howdy world"]
+> > ~~~
+> > {: .language-yaml}
+> >
+> {: .solution}
+{: .challenge}
+
 
 ## Input Parameters and Artifacts
 
