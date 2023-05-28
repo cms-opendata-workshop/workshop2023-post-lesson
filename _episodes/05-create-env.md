@@ -72,7 +72,7 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 ```
 The file has the following content:
 
-> ### YAML File
+> ## YAML File
 > ~~~
 > # argo-wf-volume.yaml
 > apiVersion: argoproj.io/v1alpha1
@@ -125,7 +125,7 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 ```
 This file must have the following content:
 
-> ### YAML File
+> ## YAML File
 > ~~~
 > # pv-pod.yaml
 > apiVersion: v1
