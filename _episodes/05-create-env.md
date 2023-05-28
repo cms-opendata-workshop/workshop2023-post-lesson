@@ -96,8 +96,8 @@ The file has the following content:
 >       volumeMounts:
 >       - name: task-pv-storage
 >         mountPath: /mnt/vol
->  ~~~
->  {: .language-yaml}
+> ~~~
+> {: .language-yaml}
 {: .solution}
 
 Submit and check this workflow with:
@@ -144,8 +144,8 @@ This file must have the following content:
 >     volumeMounts:
 >     - mountPath: /mnt/data
 >       name: task-pv-storage
->  ~~~
->  {: .language-yaml}
+> ~~~
+> {: .language-yaml}
 {: .solution}
 
 Create the storage pod and copy the files from there
