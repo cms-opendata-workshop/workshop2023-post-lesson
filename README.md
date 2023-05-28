@@ -1,4 +1,4 @@
-# Cloud Computing Pre-exercice
+# Cloud Computing Post-exercice
 
 This is the cloud computing set up tutorial for the CMS open data workshop
 
