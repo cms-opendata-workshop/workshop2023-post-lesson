@@ -11,13 +11,6 @@ keypoints:
 - "With a simple but a tight yaml structure, a full-blown analysis can be performed and accessed from a K8s cluster."
 ---
 
-> ## Minikube
->
-> This episode is relevant when working on the Google Kubernetes Engine, as will be done during the hands-on session of the workshop. 
-> If you are going through these pre-exercises on minikube, just read this as part of your information, but do not work through it.
->
-{: .testimonial}
-
 ## Accessing files via http
 
 The storage volume in your Kubernetes cluster provides a convenient way to store and manage files. While you can copy files between the storage volume and the Cloud Console, a practical use case involves running "big data" workloads in the cloud and then downloading the output to your local desktop or laptop for further processing. To make your files easily accessible to the outside world, you can deploy a web server that mounts the storage volume.
