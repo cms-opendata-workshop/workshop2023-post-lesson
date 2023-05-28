@@ -72,7 +72,8 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 ```
 The file has the following content:
 
-> YAML File
+> ### YAML File
+> ~~~
 > # argo-wf-volume.yaml
 > apiVersion: argoproj.io/v1alpha1
 > kind: Workflow
@@ -95,6 +96,8 @@ The file has the following content:
 >       volumeMounts:
 >       - name: task-pv-storage
 >         mountPath: /mnt/vol
+>  ~~~
+>  {: .language-yaml}
 {: .solution}
 
 Submit and check this workflow with:
@@ -122,7 +125,8 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 ```
 This file must have the following content:
 
-> YAML File
+> ### YAML File
+> ~~~
 > # pv-pod.yaml
 > apiVersion: v1
 > kind: Pod
@@ -140,6 +144,8 @@ This file must have the following content:
 >     volumeMounts:
 >     - mountPath: /mnt/data
 >       name: task-pv-storage
+>  ~~~
+>  {: .language-yaml}
 {: .solution}
 
 Create the storage pod and copy the files from there
