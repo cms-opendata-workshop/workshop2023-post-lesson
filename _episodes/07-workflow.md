@@ -45,7 +45,7 @@ spec:
         
 Let's run the workflow:
 ```
-argo submit --watch container-workflow.yaml
+argo submit --watch container-workflow.yaml -n argo
 ```
 
 Open the Argo Workflows UI. Then navigate to the workflow, you should see a single container running.
