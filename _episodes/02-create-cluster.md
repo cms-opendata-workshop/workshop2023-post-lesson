@@ -21,30 +21,31 @@ For the hands-on part of this lesson you will not have to create the cluster for
 {: .testimonial}
 
 * Get to the Console
-* Create a new project or select one of your interest (if you already have one)
+* Create a new project or select one (if you already have one). Note that you will not be able to create clusters in the GCP project that we used for the workshop.
 * Click on the Kubernetes engine/clusters section on the left side menu
 ![](../fig/SelectCluster.png)
-* Select create cluster (standard)
+* Click Create
 ![](../fig/SelectCreate.png)
-* Select GKE Standard
+* Select Standard (not autopilot)
 ![](../fig/SelectGKE.png)
 * Give it a name
-* Change the zone to ```europe-west1-b```
+* Change the zone to e.g. ```europe-west1-b``` (for data streaming speed, choose a [zone](https://cloud.google.com/compute/docs/regions-zones) close to CERN)
 ![](../fig/BasicClusterName.png)
 * Many ways to configure the cluster, but let's try an efficient one with autoscaling
-* Go to default pool
+* Go to "Default pool"
 * Choose size: 1 node
 * Autoscaling 0 to 4
   ![](../fig/ClusterDetails.png)
-* Go to Nodes
-* Choose a machine e2-standar-4
+* Go to "Nodes"
+* Choose a machine e2-standard-4
+* Check "Enable spot VMs" down in the menu
 * Leave the rest as it is
 * Hit create
 ![](../fig/MachineConfig.png)
-* Creation will take while
-While we wait, lets inspect the Cloud shell...
+* Creation will take a while
+While we wait, let us inspect the Cloud shell...
 ## Cloud shell
-GCP provides an *access machine* so you can interact with their different services, including our newly created K8s cluster.  This machine (and the terminal) is not really part of the cluster. As was said, it is an entry point.  From here you could *connect* to your cluster.
+GCP provides an *access machine* so you can interact with their different services, including our newly created K8s cluster.  This machine (and the terminal) is not really part of the cluster. As was said, it is an entry point. From here you could *connect* to your cluster.
 ## The `gcloud` command
 The gcloud command-line interface is the primary CLI tool to create and manage Google Cloud resources. You can use this tool to perform many common platform tasks either from the command line or in scripts and other automations.
 ## Connect to your cluster
