@@ -61,66 +61,18 @@ Check:
 ```bash
 kubectl get pvc -n argo
 ```
-Now an argo workflow coul claim and access this volume with an argo Workflow, let's retrieve the configuration file with:
-```bash
-wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/GKE/argo-wf-volume.yaml
-```
-The file has the following content:
 
-> ## YAML File
-> ~~~
-> # argo-wf-volume.yaml
-> apiVersion: argoproj.io/v1alpha1
-> kind: Workflow
-> metadata:
->   generateName: test-hostpath-
-> spec:
->   entrypoint: test-hostpath
->   volumes:
->     - name: task-pv-storage
->       persistentVolumeClaim:
->         claimName: nfs-1
->   templates:
->   - name: test-hostpath
->    script:
->       image: alpine:latest
->       command: [sh]
->       source: |
->         echo "This is the ouput" > /mnt/vol/test.txt
->         echo ls -l /mnt/vol: `ls -l /mnt/vol`
->       volumeMounts:
->       - name: task-pv-storage
->         mountPath: /mnt/vol
-> ~~~
-> {: .language-yaml}
-{: .solution}
+## Access the disk through a pod
 
-Submit and check this workflow with:
-```bash
-argo submit -n argo argo-wf-volume.yaml
-argo list -n argo
-```
-
-Take the name of the workflow from the output (replace XXXXX in the following command) and check the logs:
-```bash
-kubectl logs pod/test-hostpath-XXXXX  -n argo main
-```
-
-Once the job is done, you will see something like:
-```output
-ls -l /mnt/vol: total 20 drwx------ 2 root root 16384 Sep 22 08:36 lost+found -rw-r--r-- 1 root root 18 Sep 22 08:36 test.txt
-```
-
-## Get the output file
-The example job above produced a text file as an output. It resides in the persistent volume that the workflow job has created. To copy the file from that volume to the cloud shell, we will define a container, a “storage pod” and mount the volume there so that we can get access to it.
+To get files from the persistent volume, we can define a container, a “storage pod” and mount the volume there so that we can get access to it.
 
 Get the pv-pod.yaml file with:
 ```bash
 wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/files/GKE/pv-pod.yaml
 ```
-This file must have the following content:
+This file has the following content:
 
-> ## YAML File
+> ### YAML File
 > ~~~
 > # pv-pod.yaml
 > apiVersion: v1
@@ -143,11 +95,18 @@ This file must have the following content:
 > {: .language-yaml}
 {: .solution}
 
-Create the storage pod and copy the files from there
+Create the storage pod and check the contents of the persistent volume
 ```bash
 kubectl apply -f pv-pod.yaml -n argo
+kubectl exec pv-pod -n argo -- ls /mnt/data
+```
+
+Once you have files in the volume, you could use
+
+```bash
 kubectl cp  pv-pod:/mnt/data /tmp/poddata -n argo
 ```
-and you will get the file created by the job in `/tmp/poddata/test.txt`.
+
+to get them to a local `/tmp/poddata` directory.
 
 {% include links.md %}
