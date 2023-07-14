@@ -3,14 +3,13 @@ layout: lesson
 root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
-Physics analyses in the field of particle physics often involve processing large amounts of data, typically spanning several terabytes. Within the CMS collaboration, these analyses have been performed using high-throughput batch systems like HTCondor, which is installed at CERN and various research institutions. Additionally, the worldwide LHC computing grid (WLCG) has been instrumental in providing distributed computing resources for such analyses. However, open data users may not have access to these resources at their own institutions. To overcome this limitation, the CMS OpenData workshop in 2023 aims to enable researchers to utilize computing resources through public cloud vendors.
 
 > ## What is this lesson about?
 >
-> Welcome.  In this lesson you will:
-> - Learn what Kubernetes is.
-> - Understand the basic way on how Kubernetes (often abbreviated as K8s) and a workflow orchestration tool such as Argo operate.
-> - Learn how to create a K8s cluster prepared for physics analysis.
+> This "post-workshop" lesson guides you through the learning material for cloud computing in the CMS open data workshop.
+> - It points you to the existing "pre-exercise" lesson to learn the basics and for local testing
+> - It shows how to create a cluster of your own (during the workshop, the clusters were created for you)
+> - It points you to the existing hands-on lesson to learn how to process CMS open data on cloud resources
 > - Learn to configure and run a simple Argo workflow.
 {: .objectives}
 
@@ -21,7 +20,7 @@ Physics analyses in the field of particle physics often involve processing large
 {: .prereq}
 
 > ## Helpline
-> Remember that we are always available to help. Our [Mattermost](https://mattermost.web.cern.ch/cmsodws2023/channels/cloud-pre-exercise) channel is open.
+> We will be watching the [Mattermost](https://mattermost.web.cern.ch/cmsodws2023/channels/cloud-post-exercise) for your questions.
 {: .callout}
 
 {% include links.md %}
