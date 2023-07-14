@@ -10,7 +10,7 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 > - It points you to the existing "pre-exercise" lesson to learn the basics and for local testing
 > - It shows how to create a cluster of your own (during the workshop, the clusters were created for you)
 > - It points you to the existing hands-on lesson to learn how to process CMS open data on cloud resources
-> - Learn to configure and run a simple Argo workflow.
+> - It shows how to delete the cluster and the persistent disk.
 {: .objectives}
 
 > ## Prerequisites
