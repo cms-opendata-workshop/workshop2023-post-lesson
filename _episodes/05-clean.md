@@ -57,3 +57,5 @@ gcloud compute disks delete DISK_NAME [DISK_NAME …] [--region=REGION     | --z
 * Standby to see the complete deletion of the cluster:
 ![](../fig/StartOver5.png)
 Perfect you’re ready to start over
+
+{% include links.md %}
