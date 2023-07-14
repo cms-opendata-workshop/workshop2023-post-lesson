@@ -72,7 +72,7 @@ wget https://cms-opendata-workshop.github.io/workshop2023-lesson-introcloud/file
 ```
 This file has the following content:
 
-> ### YAML File
+> ## YAML File
 > ~~~
 > # pv-pod.yaml
 > apiVersion: v1
