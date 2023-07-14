@@ -6,11 +6,11 @@ questions:
 - "Where to find the hands-on exercises?"
 
 objectives:
-- "Go through some hands-on exercises to run workflows fro CMS open data processing on cloud"
+- "Go through some hands-on exercises to run workflows for CMS open data processing on the cloud"
 - "Learn how to modify the example workflow"
 
 keypoints:
-- "Foll"
+- "The cloud computing lesson guides you through hands-on exercises with CMS open data on the cloud."
 ---
 
 
