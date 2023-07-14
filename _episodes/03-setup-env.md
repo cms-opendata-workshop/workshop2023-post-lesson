@@ -3,16 +3,11 @@ title: "Storing a workflow output on Kubernetes"
 teaching: 5
 exercises: 30
 questions:
-- "How to setup a workflow engine to submit jobs?"
-- "How to run a simple job?"
-- "How can I set up shared storage for my workflows?"
-- "How to run a simple job and get the the ouput?"
+- "How to set up a common storage on a cloud cluster"
 objectives:
-- "Understand how to run a simple workflows in a commercial cloud environment or local machine"
 - "Understand how to set up shared storage and use it in a workflow"
 keypoints:
-- "With Kubernetes one can run workflows similar to a batch system"
-- "Open Data workflows can be run in a commercial cloud environment using modern tools"
+- "Persistant volume is used to store the workflow output"
 ---
 
 
@@ -154,3 +149,5 @@ kubectl apply -f pv-pod.yaml -n argo
 kubectl cp  pv-pod:/mnt/data /tmp/poddata -n argo
 ```
 and you will get the file created by the job in `/tmp/poddata/test.txt`.
+
+{% include links.md %}
